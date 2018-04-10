@@ -26,6 +26,7 @@ private:
 	string zip;				// zip code of mailing address
 public:
 	char[30] getFirstName() const;	// return first name of contact
+	char[30] getLastName() const; 	// return last name of contact
 };
 
 
