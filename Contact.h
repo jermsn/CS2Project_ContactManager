@@ -10,26 +10,45 @@
 
 using namespace std;
 
+class Date
+{
+	// Friends
+	friend ostream &operator << (ostream &, const Date &);
+	friend istream &operator >> (istream &, Date &);
+public:
+	int month;
+	int day;
+	int year;
+};
+
 class Contact
 {
 private:
-	char firstName[30]; 	// c-string of first name
-	char lastName[30];		// c-string of last name
-	string birthDate;		// c-string of birth date, formatted mm/dd/yyyy
-	string homePhone;		// c-string of home phone, formated (NNN) NNN-NNNN
-	string mobilePhone;		// c-string of mobile phone, formated (NNN) NNN-NNNN
-	string workPhone;		// c-string of work phone, formated (NNN) NNN-NNNN
-	string addrLine1;		// first line of mailing address
-	string addrLine2;		// second line of mailing address
-	string city;			// city of mailing address
-	string state;			// state of mailing address
-	string zip;				// zip code of mailing address
+	char firstName[30];		// First name
+	char lastName[30];		// Last name
+	Date birthDate;			// Birth date, formatted mm/dd/yyyy
+	string homePhone;		// Home phone, formated (NNN) NNN-NNNN
+	string mobilePhone;		// Mobile phone, formated (NNN) NNN-NNNN
+	string workPhone;		// Work phone, formated (NNN) NNN-NNNN
+	string addrLine1;		// First line of mailing address
+	string addrLine2;		// Second line of mailing address
+	string city;			// City of mailing address
+	string state;			// State of mailing address
+	string zip;				// Zip code of mailing address
 public:
-	char[30] getFirstName() const;	// return first name of contact
-	char[30] getLastName() const; 	// return last name of contact
+	// Constructor
+	Contact();
+	// Accessors
+	const char * getFirstName() const;	// Return first name of contact
+	const char * getLastName() const; 	// Return last name of contact
+	string getBirthDate() const;		// Return contact birth date
+	string getHomePHone() const; 	// Return home phone
+	// Mutators
+	void setFirstName(string);		// Set first name of contact
+	void setLastName(string);		// Set last name of contact
+	void setBirthDate(Date);		// Set birth date
+	void setHomePHone(string);		// Set home phone
 };
-
-
 
 
 #endif /* CONTACT_H_ */
