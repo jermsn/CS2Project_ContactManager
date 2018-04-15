@@ -27,15 +27,18 @@ int main() {
 
 	// Prompt for birthdate
 	Date tmpDate;
-	cout << "Please enter your contact's birthdate in the form of MM/DD/YYYY: ";
-	cin >> tmpDate; // store date
-
-	while ( cin.fail() )
+	do
 	{
-		cin.clear();
-		cout << "Invalid Data Entered. Please enter in the form of MM/DD/YYYY (or 99/99/9999 if unknown): "<< endl;
-		cin >> tmpDate;
-	}
+		if ( cin.fail() )
+		{
+			cin.clear();
+			cin.ignore(32764,'\n');
+			cout << "Invalid data entered. Please enter your contact's birthdate in the form of MM/DD/YYYY (or 99/99/9999 if unknown): ";
+		}
+		else
+			cout << "Please enter your contact's birthdate in the form of MM/DD/YYYY: ";
+		cin >> tmpDate; // store date
+	} while ( cin.fail() );
 	c1.setBirthDate(tmpDate);
 
 

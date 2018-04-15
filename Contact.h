@@ -48,6 +48,8 @@ public:
 	void setLastName(string);		// Set last name of contact
 	void setBirthDate(Date);		// Set birth date
 	void setHomePHone(string);		// Set home phone
+	// Exception classes
+	class invalidMonth{};
 };
 
 

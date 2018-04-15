@@ -149,6 +149,7 @@ istream &operator>>( istream &input, Date &dt)
 
 	if(!( dt.month > 0 && dt.month < 13))
 		input.clear( ios::failbit );
+		//throw invalidMonth;
 	if(!( dt.day > 0 && dt.day < 32))
 		input.clear( ios::failbit );
 	if(!( dt.year > 1900 && dt.year < 2100))
