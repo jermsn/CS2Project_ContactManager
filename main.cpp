@@ -8,43 +8,45 @@
 
 #include <iostream>
 #include "Contact.h"
+#include "Functions.h"
 using namespace std;
 
 int main() {
-	Contact c1;
+	char menuChoice;
+	Contact cont1;
 
-	// Prompt for entry of first name
-	string inputName;
-	cout << "Please enter your contact's first name: ";
-	getline(cin, inputName);
-	c1.setFirstName(inputName);
+	cout << "Welcome to the Contact Management System" << endl;
+	cout << "========================================" << endl;
 
-	// Prompt for entry of last name
-	inputName="";
-	cout << "Please enter your contact's last name: ";
-	getline(cin, inputName);
-	c1.setLastName(inputName);
+	do {
 
-	// Prompt for birthdate
-	Date tmpDate;
-	do
-	{
-		if ( cin.fail() )
-		{
-			cin.clear();
-			cin.ignore(32764,'\n');
-			cout << "Invalid data entered. Please enter your contact's birthdate in the form of MM/DD/YYYY (or 99/99/9999 if unknown): ";
-		}
-		else
-			cout << "Please enter your contact's birthdate in the form of MM/DD/YYYY: ";
-		cin >> tmpDate; // store date
-	} while ( cin.fail() );
-	c1.setBirthDate(tmpDate);
+			contactMenu();
+			cout << "Please enter a menu choice: ";
+			cin >> menuChoice;
+			clearCIN();
 
+			switch(toupper(menuChoice)) {
+				case ('1'): {
+					cont1=contactEntry();
+					break;
+				}//case 1
+				case('2'): {
+					displayContact(cont1);
+					break;
+				}//case 2
+				case('3'): {
+					cout << endl << "Program is ending - Have a nice day!" << endl;
+					break;
+				}//case 7
+				default:  {
+					cout << "========================================" << endl << endl;
+					cout << "Invalid choice. Valid menu options are 1-3. " << endl << endl;
+				}
+			}//switch menuChoice
 
-	cout << "First name, in corrected case is: " << c1.getFirstName() << endl;
-	cout << "Last name, in corrected case is: " << c1.getLastName() << endl;
-	cout << "Birthdate, if known, is: " << c1.getBirthDate() << endl;
+		} while ( menuChoice != '3' ); //while
+
+		return 0;
 
 	cout << "Program Ending. Have a nice day." << endl; // prints Program Ending. Have a nice day.
 	return 0;

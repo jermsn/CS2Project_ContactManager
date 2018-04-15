@@ -20,9 +20,9 @@ Contact::Contact()
 		firstName[f]=' ';
 	for(int l=0; l<30; l++)
 		lastName[l]=' ';
-	birthDate.day=99;
-	birthDate.month=99;
-	birthDate.year=9999;
+	birthDate.setMonth(99, 99, 9999);
+	birthDate.setDay(99, 99, 9999);
+	birthDate.setYear(99, 99, 9999);
 }
 
 //****************************************************************
@@ -48,12 +48,36 @@ string Contact::getBirthDate() const
 {
 	string tmpStr;
 
-	if ( birthDate.year != 9999)
-		tmpStr = to_string(birthDate.month) + "/" + to_string(birthDate.day) + "/" + to_string(birthDate.year);
+	if ( birthDate.getYear() != 9999)
+		tmpStr = to_string(birthDate.getMonth()) + "/" + to_string(birthDate.getDay()) + "/" + to_string(birthDate.getYear());
 	else
 		tmpStr = "<Unknown>";
 
 	return tmpStr;
+}
+
+//****************************************************************
+//	Accessor for Home Phone
+//****************************************************************
+string Contact::getHomePhone() const
+{
+	return homePhone.getPhoneNumber();
+}
+
+//****************************************************************
+//	Accessor for Mobile Phone
+//****************************************************************
+string Contact::getMobilePhone() const
+{
+	return mobilePhone.getPhoneNumber();
+}
+
+//****************************************************************
+//	Accessor for Work Phone
+//****************************************************************
+string Contact::getWorkPhone() const
+{
+	return workPhone.getPhoneNumber();
 }
 
 //****************************************************************
@@ -103,59 +127,27 @@ void Contact::setBirthDate(Date inputDate)
 }
 
 //****************************************************************
-//	Stream output for dates
+//	Mutator for home phone
 //****************************************************************
-ostream &operator<<( ostream &output, const Date &dt )
+void Contact::setHomePhone(PhoneNumber inputPhone)
 {
-	output << dt.month << "/" << dt.day << "/" << dt.year;
-	return output;
+	homePhone = inputPhone;
 }
 
 //****************************************************************
-//	Stream input and validation for dates
-//	enforces date input in MM/DD/YYYY format
+//	Mutator for mobile phone
 //****************************************************************
-istream &operator>>( istream &input, Date &dt)
+void Contact::setMobilePhone(PhoneNumber inputPhone)
 {
-	int inNum;
-	char temp; 								// temporary variable used to read through input
+	mobilePhone = inputPhone;
+}
 
-	if( isdigit(input.peek()) )
-			input >> inNum;					// read first number
-	else
-	{
-		input >> temp;
-		input.clear( ios::failbit );
-	}
-
-	if( input.peek() != '/' )
-		input.clear( ios::failbit ); 		// first date separator was not correct; set bad bit
-	else
-	{
-		dt.month = inNum;					// assign initial number to month
-		input >> temp;						// read date separator into temp variable
-		input >> inNum;						// read second number
-
-
-		if(input.peek() == '/')
-		{
-			dt.day = inNum;					// assign second number to day
-			input >> temp;
-			input >> dt.year;
-		}
-		else
-			input.clear( ios::failbit );	// second date separator was not correct; set bad bit
-	}
-
-	if(!( dt.month > 0 && dt.month < 13))
-		input.clear( ios::failbit );
-		//throw invalidMonth;
-	if(!( dt.day > 0 && dt.day < 32))
-		input.clear( ios::failbit );
-	if(!( dt.year > 1900 && dt.year < 2100))
-		input.clear( ios::failbit );
-
-	return input;
+//****************************************************************
+//	Mutator for work phone
+//****************************************************************
+void Contact::setWorkPhone(PhoneNumber inputPhone)
+{
+	workPhone = inputPhone;
 }
 
 
