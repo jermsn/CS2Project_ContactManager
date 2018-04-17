@@ -37,13 +37,23 @@ public:
 	string getHomePhone() const; 		// Return home phone
 	string getMobilePhone() const;		// Return mobile phone
 	string getWorkPhone() const;		// Return work phone
+	string getAddrLine1() const;		// Return address line 1
+	string getAddrLine2() const;		// Return address line 2
+	string getCity() const;				// Return city
+	string getState() const;			// Return state
+	string getZip() const;				// Return ZIP
 	// Mutators
 	void setFirstName(string);			// Set first name of contact
 	void setLastName(string);			// Set last name of contact
 	void setBirthDate(Date);			// Set birth date
 	void setHomePhone(PhoneNumber);		// Set home phone
-	void setMobilePhone(PhoneNumber);	// Set home phone
-	void setWorkPhone(PhoneNumber);		// Set home phone
+	void setMobilePhone(PhoneNumber);	// Set mobile phone
+	void setWorkPhone(PhoneNumber);		// Set work phone
+	void setAddrLine1(string);			// Set address line 1
+	void setAddrLine2(string);			// Set address line 2
+	void setCity(string);				// Set city
+	void setState(string);				// Set state
+	void setZip(string);				// Set ZIP
 };
 
 

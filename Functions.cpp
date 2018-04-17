@@ -121,6 +121,41 @@ Contact contactEntry()
 	} while ( cin.fail() );
 	c1.setWorkPhone(inWorkPhone);
 
+	// Prompt for address line 1
+	cout << "Enter your contact's street address (or 999 if blank): ";
+	string tmpA1;
+	getline(cin, tmpA1);
+	clearCIN();
+	c1.setAddrLine1(tmpA1);
+
+	// Prompt for address line 2
+	cout << "Enter your contact's street address (or 999 if blank): ";
+	string tmpA2;
+	getline(cin, tmpA2);
+	clearCIN();
+	c1.setAddrLine2(tmpA2);
+
+	// Prompt for city
+	cout << "Enter your contact's city (or 999 if blank): ";
+	string tmpCity;
+	getline(cin, tmpCity);
+	clearCIN();
+	c1.setCity(tmpCity);
+
+	// Prompt for state
+	cout << "Enter your contact's state (or 999 if blank): ";
+	string tmpState;
+	getline(cin, tmpState);
+	clearCIN();
+	c1.setState(tmpState);
+
+	// Prompt for zip
+	cout << "Enter your contact's ZIP code (or 999 if blank): ";
+	string tmpZip;
+	getline(cin, tmpZip);
+	clearCIN();
+	c1.setZip(tmpZip);
+
 	return c1;
 } // contactEntry
 
@@ -135,30 +170,38 @@ void displayContact(Contact c1)
 			setw(13) << "Birth Date" <<
 			setw(17) << "Home Phone" <<
 			setw(17) << "Mobile Phone" <<
-			setw(17) << "Work Phone" << endl;
+			setw(17) << "Work Phone" <<
+			setw(30) << "Address Line 1" <<
+			setw(30) << "Address Line 2" <<
+			setw(20) << "City" <<
+			setw(5)  << "State" <<
+			setw(7)  << "ZIP" << endl;
 
 	cout << setw(33) << left << "==========" <<
 			setw(33) << "===========" <<
 			setw(13) << "==========" <<
 			setw(17) << "==========" <<
 			setw(17) << "============" <<
-			setw(17) << "==========" << endl;
+			setw(17) << "==========" <<
+			setw(30) << "==========" <<
+			setw(30) << "==========" <<
+			setw(20) << "==========" <<
+			setw(5)  << "====" <<
+			setw(7)  << "=====" <<	endl;
 
 	cout << setw(33) << left << c1.getFirstName() <<
 			setw(33) << c1.getLastName() <<
 			setw(13) << c1.getBirthDate() <<
 			setw(17) << c1.getHomePhone() <<
 			setw(17) << c1.getMobilePhone() <<
-			setw(17) << c1.getWorkPhone() << endl << endl;
+			setw(17) << c1.getWorkPhone() <<
+			setw(30) << c1.getAddrLine1() <<
+			setw(30) << c1.getAddrLine2() <<
+			setw(20) << c1.getCity() <<
+			setw(5)  << c1.getState() <<
+			setw(7)  << c1.getZip() << endl << endl;
 
-//	cout << endl;
-//	cout << "First name, in corrected case is: " << c1.getFirstName() << endl;
-//	cout << "Last name, in corrected case is: " << c1.getLastName() << endl;
-//	cout << "Birthdate, if known, is: " << c1.getBirthDate() << endl;
-//	cout << "Home phone number is: " << c1.getHomePhone() << endl;
-//	cout << "Mobile phone number is: " << c1.getMobilePhone() << endl;
-//	cout << "Work phone number is: " << c1.getWorkPhone() << endl;
-//	cout << endl;
+
 } // displayContact
 
 

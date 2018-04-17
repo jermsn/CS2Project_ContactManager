@@ -23,6 +23,9 @@ Contact::Contact()
 	birthDate.setMonth(99, 99, 9999);
 	birthDate.setDay(99, 99, 9999);
 	birthDate.setYear(99, 99, 9999);
+	addrLine1 = "999";
+	addrLine2 = "999";
+	city = "999";
 }
 
 //****************************************************************
@@ -78,6 +81,77 @@ string Contact::getMobilePhone() const
 string Contact::getWorkPhone() const
 {
 	return workPhone.getPhoneNumber();
+}
+
+//****************************************************************
+//	Accessor for Address Line 1
+//****************************************************************
+string Contact::getAddrLine1() const
+{
+	string tmpStr;
+	if (addrLine1 != "999")
+		tmpStr = addrLine1;
+	else
+		tmpStr = "<Unknown>";
+
+	return tmpStr;
+}
+
+//****************************************************************
+//	Accessor for Address Line 2
+//****************************************************************
+string Contact::getAddrLine2() const
+{
+	string tmpStr;
+	if (addrLine2 != "999")
+		tmpStr = addrLine2;
+	else
+		tmpStr = "<Unknown>";
+
+	return tmpStr;
+}
+
+//****************************************************************
+//	Accessor for City
+//****************************************************************
+string Contact::getCity() const
+{
+	string tmpStr;
+	if (city != "999")
+		tmpStr = city;
+	else
+		tmpStr = "<Unknown>";
+
+	return tmpStr;
+}
+
+
+//****************************************************************
+//	Accessor for State
+//****************************************************************
+string Contact::getState() const
+{
+	string tmpStr;
+	if (state != "999")
+		tmpStr = state;
+	else
+		tmpStr = "<Unknown>";
+
+	return tmpStr;
+}
+
+//****************************************************************
+//	Accessor for Zip
+//****************************************************************
+string Contact::getZip() const
+{
+	string tmpStr;
+	if (zip != "999")
+		tmpStr = zip;
+	else
+		tmpStr = "<Unknown>";
+
+	return tmpStr;
 }
 
 //****************************************************************
@@ -150,5 +224,42 @@ void Contact::setWorkPhone(PhoneNumber inputPhone)
 	workPhone = inputPhone;
 }
 
+//****************************************************************
+//	Mutator for Address Line 1
+//****************************************************************
+void Contact::setAddrLine1(string inAddrLine1)
+{
+	addrLine1 = inAddrLine1;
+}
 
+//****************************************************************
+//	Mutator for Address Line 2
+//****************************************************************
+void Contact::setAddrLine2(string inAddrLine2)
+{
+	addrLine1 = inAddrLine2;
+}
 
+//****************************************************************
+//	Mutator for City
+//****************************************************************
+void Contact::setCity(string inCity)
+{
+	city = inCity;
+}
+
+//****************************************************************
+//	Mutator for State
+//****************************************************************
+void Contact::setState(string inState)
+{
+	state = inState;
+}
+
+//****************************************************************
+//	Mutator for ZIP Code
+//****************************************************************
+void Contact::setZip(string inZip)
+{
+	zip = inZip;
+}
