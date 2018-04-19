@@ -237,7 +237,7 @@ void Contact::setAddrLine1(string inAddrLine1)
 //****************************************************************
 void Contact::setAddrLine2(string inAddrLine2)
 {
-	addrLine1 = inAddrLine2;
+	addrLine2 = inAddrLine2;
 }
 
 //****************************************************************
