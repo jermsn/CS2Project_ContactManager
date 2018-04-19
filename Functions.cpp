@@ -148,7 +148,7 @@ Contact contactEntry()
 	// Prompt for zip
 	clearCIN();
 
-	Contact::Zipcode inZip;
+	Zipcode inZip;
 	do
 	{
 		if ( cin.fail() )

@@ -19,8 +19,9 @@ class Zipcode
 private:
 	string zip;						// ZIP code
 public:
+	Zipcode(); // constructor
 	// Accessor
-	const string getPhoneNumber () const;
+	const string getZip () const;
 };
 
 
