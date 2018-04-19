@@ -232,11 +232,29 @@ void Contact::setAddrLine1(string inAddrLine1)
 }
 
 //****************************************************************
+//	Mutator for Address Line 1 (stream input)
+//****************************************************************
+void Contact::setAddrLine1(istream& inStream)
+{
+	//cout << "Assigning " << inAddrLine1 << " to addr" << endl;
+	inStream >> addrLine1;
+}
+
+//****************************************************************
 //	Mutator for Address Line 2
 //****************************************************************
 void Contact::setAddrLine2(string inAddrLine2)
 {
 	addrLine2 = inAddrLine2;
+}
+
+//****************************************************************
+//	Mutator for Address Line 2 (stream input)
+//****************************************************************
+void Contact::setAddrLine2(istream& inStream)
+{
+	//cout << "Assigning " << inAddrLine1 << " to addr" << endl;
+	inStream >> addrLine2;
 }
 
 //****************************************************************
@@ -248,12 +266,32 @@ void Contact::setCity(string inCity)
 }
 
 //****************************************************************
+//	Mutator for City (stream input)
+//****************************************************************
+void Contact::setCity(istream& inStream)
+{
+	//cout << "Assigning " << inAddrLine1 << " to addr" << endl;
+	inStream >> city;
+}
+
+
+//****************************************************************
 //	Mutator for State
 //****************************************************************
 void Contact::setState(string inState)
 {
 	state = inState;
 }
+
+//****************************************************************
+//	Mutator for State (stream input)
+//****************************************************************
+void Contact::setState(istream& inStream)
+{
+	//cout << "Assigning " << inAddrLine1 << " to addr" << endl;
+	inStream >> state;
+}
+
 
 //****************************************************************
 //	Mutator for ZIP Code

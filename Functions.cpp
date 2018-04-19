@@ -122,28 +122,24 @@ Contact contactEntry()
 	c1.setWorkPhone(inWorkPhone);
 
 	// Prompt for address line 1
+	clearCIN();
 	cout << "Enter the first line of your contact's street address (or 999 if blank): ";
-	string tmpA1;
-	getline(cin, tmpA1);
-	c1.setAddrLine1(tmpA1);
+	c1.setAddrLine1(cin);
 
 	// Prompt for address line 2
+	clearCIN();
 	cout << "Enter the second line of your contact's street address (or 999 if blank): ";
-	string tmpA2;
-	getline(cin, tmpA2);
-	c1.setAddrLine2(tmpA2);
+	c1.setAddrLine2(cin);
 
 	// Prompt for city
+	clearCIN();
 	cout << "Enter your contact's city (or 999 if blank): ";
-	string tmpCity;
-	getline(cin, tmpCity);
-	c1.setCity(tmpCity);
+	c1.setCity(cin);
 
 	// Prompt for state
+	clearCIN();
 	cout << "Enter your contact's state (or 999 if blank): ";
-	string tmpState;
-	getline(cin, tmpState);
-	c1.setState(tmpState);
+	c1.setState(cin);
 
 	// Prompt for zip
 	clearCIN();

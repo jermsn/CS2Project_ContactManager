@@ -51,9 +51,13 @@ public:
 	void setMobilePhone(PhoneNumber);	// Set mobile phone
 	void setWorkPhone(PhoneNumber);		// Set work phone
 	void setAddrLine1(string);			// Set address line 1
+	void setAddrLine1(istream&);		// Set address line 1 - stream input
 	void setAddrLine2(string);			// Set address line 2
+	void setAddrLine2(istream&);		// Set address line 2 - stream input
 	void setCity(string);				// Set city
+	void setCity(istream&);				// Set city - stream input
 	void setState(string);				// Set state
+	void setState(istream&);			// Set state - stream input
 	void setZip(Zipcode);				// Set ZIP code
 };
 
