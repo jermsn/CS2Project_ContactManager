@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>.</itemPath>
+      <itemPath>../.git</itemPath>
+      <itemPath>../ClientContact.cpp</itemPath>
+      <itemPath>../ClientContact.h</itemPath>
+      <itemPath>../Contact.h</itemPath>
+      <itemPath>../ContactImp.cpp</itemPath>
+      <itemPath>../Date.h</itemPath>
+      <itemPath>../DateImp.cpp</itemPath>
+      <itemPath>../Functions.cpp</itemPath>
+      <itemPath>../Functions.h</itemPath>
+      <itemPath>../PersonalContact.cpp</itemPath>
+      <itemPath>../PersonalContact.h</itemPath>
+      <itemPath>../PhoneImpNumberImp.cpp</itemPath>
+      <itemPath>../PhoneNumber.h</itemPath>
+      <itemPath>../README.md</itemPath>
+      <itemPath>../RelativeContact.cpp</itemPath>
+      <itemPath>../RelativeContact.h</itemPath>
+      <itemPath>../WorkContact.cpp</itemPath>
+      <itemPath>../WorkContact.h</itemPath>
+      <itemPath>../main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+      </compileType>
+      <item path="." ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../.git" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../ClientContact.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../ClientContact.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Contact.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../ContactImp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Date.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../DateImp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Functions.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Functions.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../PersonalContact.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../PersonalContact.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../PhoneImpNumberImp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../PhoneNumber.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../README.md" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../RelativeContact.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../RelativeContact.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../WorkContact.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../WorkContact.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="." ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../.git" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../ClientContact.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../ClientContact.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Contact.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../ContactImp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Date.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../DateImp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Functions.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Functions.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../PersonalContact.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../PersonalContact.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../PhoneImpNumberImp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../PhoneNumber.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../README.md" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../RelativeContact.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../RelativeContact.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../WorkContact.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../WorkContact.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
