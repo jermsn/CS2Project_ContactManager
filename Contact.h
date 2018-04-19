@@ -7,6 +7,7 @@
 
 #include "Date.h"
 #include "PhoneNumber.h"
+#include "Zipcode.h"
 
 #ifndef CONTACT_H_
 #define CONTACT_H_
@@ -26,7 +27,7 @@ private:
 	string addrLine2;		// Second line of mailing address
 	string city;			// City of mailing address
 	string state;			// State of mailing address
-	string zip;				// Zip code of mailing address
+	Zipcode zip;			// Zip code of mailing address
 public:
 	// Constructor
 	Contact();
@@ -41,7 +42,7 @@ public:
 	string getAddrLine2() const;		// Return address line 2
 	string getCity() const;				// Return city
 	string getState() const;			// Return state
-	string getZip() const;				// Return ZIP
+	string getZip() const; 				// Return ZIP code
 	// Mutators
 	void setFirstName(string);			// Set first name of contact
 	void setLastName(string);			// Set last name of contact
@@ -53,7 +54,7 @@ public:
 	void setAddrLine2(string);			// Set address line 2
 	void setCity(string);				// Set city
 	void setState(string);				// Set state
-	void setZip(string);				// Set ZIP
+	void setZip(Zipcode);				// Set ZIP code
 };
 
 

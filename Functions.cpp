@@ -122,39 +122,45 @@ Contact contactEntry()
 	c1.setWorkPhone(inWorkPhone);
 
 	// Prompt for address line 1
-	cout << "Enter your contact's street address (or 999 if blank): ";
+	cout << "Enter the first line of your contact's street address (or 999 if blank): ";
 	string tmpA1;
 	getline(cin, tmpA1);
-	clearCIN();
 	c1.setAddrLine1(tmpA1);
 
 	// Prompt for address line 2
-	cout << "Enter your contact's street address (or 999 if blank): ";
+	cout << "Enter the second line of your contact's street address (or 999 if blank): ";
 	string tmpA2;
 	getline(cin, tmpA2);
-	clearCIN();
 	c1.setAddrLine2(tmpA2);
 
 	// Prompt for city
 	cout << "Enter your contact's city (or 999 if blank): ";
 	string tmpCity;
 	getline(cin, tmpCity);
-	clearCIN();
 	c1.setCity(tmpCity);
 
 	// Prompt for state
 	cout << "Enter your contact's state (or 999 if blank): ";
 	string tmpState;
 	getline(cin, tmpState);
-	clearCIN();
 	c1.setState(tmpState);
 
 	// Prompt for zip
-	cout << "Enter your contact's ZIP code (or 999 if blank): ";
-	string tmpZip;
-	getline(cin, tmpZip);
 	clearCIN();
-	c1.setZip(tmpZip);
+
+	Contact::Zipcode inZip;
+	do
+	{
+		if ( cin.fail() )
+		{
+			clearCIN();
+			cout << "Invalid data entered. Enter your contact's ZIP Code in the form of NNNNN-NNNN or NNNNN [enter 99999 for blank]: ";
+		}
+		else
+			cout << "Please enter your contact's ZIP Code in the form of NNNNN-NNNN or NNNNN: ";
+		cin >> inZip; // store date
+	} while ( cin.fail() );
+	c1.setZip(inZip);
 
 	return c1;
 } // contactEntry
