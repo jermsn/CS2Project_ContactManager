@@ -9,4 +9,4 @@ This project will store contacts of the following types (all of which inherit fr
 - RelativeContact
 
 Future efforts will include writing to a binary file an implementing a linked list for STL compatibility.
-test
+atest
