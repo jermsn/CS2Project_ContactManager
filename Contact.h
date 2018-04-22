@@ -16,19 +16,10 @@ using namespace std;
 
 class Contact
 {
-private:
-	char firstName[30];		// First name
-	char lastName[30];		// Last name
-	Date birthDate;			// Birth date, formatted mm/dd/yyyy
-	PhoneNumber homePhone;	// Home phone, formated (NNN) NNN-NNNN
-	PhoneNumber mobilePhone;// Mobile phone, formated (NNN) NNN-NNNN
-	PhoneNumber workPhone;	// Work phone, formated (NNN) NNN-NNNN
-	string addrLine1;		// First line of mailing address
-	string addrLine2;		// Second line of mailing address
-	string city;			// City of mailing address
-	string state;			// State of mailing address
-	Zipcode zip;			// Zip code of mailing address
 public:
+	// Structures
+	struct State
+	{	char stateAbbrev[3];	};
 	// Constructor
 	Contact();
 	// Accessors
@@ -41,7 +32,7 @@ public:
 	string getAddrLine1() const;		// Return address line 1
 	string getAddrLine2() const;		// Return address line 2
 	string getCity() const;				// Return city
-	string getState() const;			// Return state
+	const string getState() const;		// Return state
 	string getZip() const; 				// Return ZIP code
 	// Mutators
 	void setFirstName(string);			// Set first name of contact
@@ -56,9 +47,27 @@ public:
 	void setAddrLine2(istream&);		// Set address line 2 - stream input
 	void setCity(string);				// Set city
 	void setCity(istream&);				// Set city - stream input
-	void setState(string);				// Set state
-	void setState(istream&);			// Set state - stream input
+	void setState(char*);				// Set state
+	void setState(State);				// Set state - copy
 	void setZip(Zipcode);				// Set ZIP code
+	// Friends
+	friend ostream &operator << (ostream &, const State &);
+	friend istream &operator >> (istream &, State &);
+
+private:
+	char firstName[30];		// First name
+	char lastName[30];		// Last name
+	Date birthDate;			// Birth date, formatted mm/dd/yyyy
+	PhoneNumber homePhone;	// Home phone, formated (NNN) NNN-NNNN
+	PhoneNumber mobilePhone;// Mobile phone, formated (NNN) NNN-NNNN
+	PhoneNumber workPhone;	// Work phone, formated (NNN) NNN-NNNN
+	string addrLine1;		// First line of mailing address
+	string addrLine2;		// Second line of mailing address
+	string city;			// City of mailing address
+	State state;			// State of mailing address
+	Zipcode zip;			// Zip code of mailing address
+
+
 };
 
 

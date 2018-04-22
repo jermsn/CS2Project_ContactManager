@@ -132,14 +132,9 @@ string Contact::getCity() const
 //****************************************************************
 //	Accessor for State
 //****************************************************************
-string Contact::getState() const
+const string Contact::getState() const
 {
-	string tmpStr;
-	if (state != "999")
-		tmpStr = state;
-	else
-		tmpStr = "<Unknown>";
-
+	string tmpStr(state.stateAbbrev);
 	return tmpStr;
 }
 
@@ -278,18 +273,19 @@ void Contact::setCity(istream& inStream)
 //****************************************************************
 //	Mutator for State
 //****************************************************************
-void Contact::setState(string inState)
+void Contact::setState(char* inState)
 {
-	state = inState;
+	const int LEN=3;
+	for(int i = 0; i < LEN; i++)
+		state.stateAbbrev[i] = inState[i];
 }
 
 //****************************************************************
-//	Mutator for State (stream input)
+//	Mutator for State (copy input)
 //****************************************************************
-void Contact::setState(istream& inStream)
+void Contact::setState(State inState)
 {
-	//cout << "Assigning " << inAddrLine1 << " to addr" << endl;
-	inStream >> state;
+	Contact::state = inState;
 }
 
 
@@ -299,6 +295,59 @@ void Contact::setState(istream& inStream)
 void Contact::setZip(Zipcode inZip)
 {
 	zip = inZip;
+}
+
+
+//****************************************************************
+//	Stream output for State
+//****************************************************************
+ostream &operator << (ostream & output, const Contact::State &st)
+{
+	output << st.stateAbbrev;
+	return output;
+}
+
+//****************************************************************
+//	Stream input for State
+//****************************************************************
+istream &operator>>( istream &input, Contact::State &inState )
+{
+	const int LEN=3;
+	char tempIn[LEN];
+
+	//cout << "Your input is " << input.gcount() << " characters long." << endl;
+
+	input.get( tempIn, LEN );
+	if ( input.gcount() != LEN-1 ) 									// case must be XX
+	{
+		//cout << "Invalid length: " << input.gcount() << endl;
+		input.clear( ios::failbit );
+	}	// or set bad bit
+	else 															// proper count of characters - checking format
+	{
+		for(int i=0; i < LEN; i++)
+		{
+			if ( (i >= 0 && i <= 1) && !isalpha(tempIn[i]) ) 	// case input must be numeric
+			{
+				//cout << "Invalid character " << static_cast<int>(tempIn[i]) << " at position " << i << endl;
+				input.clear( ios::failbit ); 						// set bad bit
+			}
+			if ( i == 2 && !(tempIn[i] == 0 ))					// case 6th char is dash or space
+			{
+				//cout << "Invalid character " << static_cast<int>(tempIn[i]) << " at position " << i << endl;
+				input.clear( ios::failbit ); 						// set bad bit
+			}
+		}
+	}
+
+	if (!cin.fail())													// Assign input to if formatted correctly
+	{
+		inState.stateAbbrev[0] = toupper(tempIn[0]);
+		inState.stateAbbrev[1] = toupper(tempIn[1]);
+		inState.stateAbbrev[2] = '\0';
+	}
+
+	return input;
 }
 
 
