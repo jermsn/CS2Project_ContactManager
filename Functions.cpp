@@ -121,6 +121,9 @@ Contact contactEntry()
 	} while ( cin.fail() );
 	c1.setWorkPhone(inWorkPhone);
 
+	//*******************************************************
+	// Address Entry
+	//*******************************************************
 	// Prompt for address line 1
 	clearCIN();
 	cout << "Enter the first line of your contact's street address (or 999 if blank): ";
@@ -138,12 +141,24 @@ Contact contactEntry()
 
 	// Prompt for state
 	clearCIN();
-	cout << "Enter your contact's state (or 999 if blank): ";
-	c1.setState(cin);
+	Contact::State inState;
+	do
+	{
+		if ( cin.fail() )
+		{
+			clearCIN();
+			cout << "Invalid data entered. Enter your contact's State abbreviation [enter XX for blank]: ";
+		}
+		else
+			cout << "Please enter your contact's State abbreviation: ";
+		cin >> inState; // store state
+	} while ( cin.fail() );
+	cout << "Passing " << inState << " for contact input." << endl;
+	c1.setState(inState);
+	cout << "State has been assigned to " << c1.getState() << "." << endl;
 
 	// Prompt for zip
 	clearCIN();
-
 	Zipcode inZip;
 	do
 	{
