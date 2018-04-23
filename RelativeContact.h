@@ -8,7 +8,11 @@
 #include "Contact.h"
 
 class RelativeContact : public Contact{
-
+private:
+	string relationship;
+public:
+	void setRelationship(string);
+	string getRelationship() const;
 };
 
 #endif //GROUP_PROJECT_RELATIVECONTACT_H
