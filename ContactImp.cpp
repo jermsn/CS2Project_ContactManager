@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string.h>
 #include "Contact.h"
+#include "Functions.h"
 
 using namespace std;
 
@@ -139,13 +140,18 @@ const string Contact::getState() const
 }
 
 //****************************************************************
-//	Accessor for Zip Code
+//	Accessor for Zip
 //****************************************************************
-string Contact::getZip() const
+const string Contact::getZip() const
 {
-	return zip.getZip();
-}
+	string tmpStr;
+	if (zip.zip != "999")
+		tmpStr = zip.zip;
+	else
+		tmpStr = "<Unknown>";
 
+	return tmpStr;
+}
 
 //****************************************************************
 //	Mutator for First Name
@@ -231,8 +237,9 @@ void Contact::setAddrLine1(string inAddrLine1)
 //****************************************************************
 void Contact::setAddrLine1(istream& inStream)
 {
-	//cout << "Assigning " << inAddrLine1 << " to addr" << endl;
-	inStream >> addrLine1;
+	string tmpStr;
+	getline(inStream, tmpStr);
+	setAddrLine1(tmpStr);
 }
 
 //****************************************************************
@@ -248,8 +255,9 @@ void Contact::setAddrLine2(string inAddrLine2)
 //****************************************************************
 void Contact::setAddrLine2(istream& inStream)
 {
-	//cout << "Assigning " << inAddrLine1 << " to addr" << endl;
-	inStream >> addrLine2;
+	string tmpStr;
+	getline(inStream, tmpStr);
+	setAddrLine2(tmpStr);
 }
 
 //****************************************************************
@@ -265,8 +273,9 @@ void Contact::setCity(string inCity)
 //****************************************************************
 void Contact::setCity(istream& inStream)
 {
-	//cout << "Assigning " << inAddrLine1 << " to addr" << endl;
-	inStream >> city;
+	string tmpStr;
+	getline(inStream, tmpStr);
+	setCity(tmpStr);
 }
 
 
@@ -318,29 +327,29 @@ istream &operator>>( istream &input, Contact::State &inState )
 	//cout << "Your input is " << input.gcount() << " characters long." << endl;
 
 	input.get( tempIn, LEN );
-	if ( input.gcount() != LEN-1 ) 									// case must be XX
+	if ( input.gcount() != LEN-1 ) 								// case must be XX
 	{
 		//cout << "Invalid length: " << input.gcount() << endl;
 		input.clear( ios::failbit );
 	}	// or set bad bit
-	else 															// proper count of characters - checking format
+	else 														// proper count of characters - checking format
 	{
 		for(int i=0; i < LEN; i++)
 		{
 			if ( (i >= 0 && i <= 1) && !isalpha(tempIn[i]) ) 	// case input must be numeric
 			{
 				//cout << "Invalid character " << static_cast<int>(tempIn[i]) << " at position " << i << endl;
-				input.clear( ios::failbit ); 						// set bad bit
+				input.clear( ios::failbit ); 					// set bad bit
 			}
-			if ( i == 2 && !(tempIn[i] == 0 ))					// case 6th char is dash or space
+			if ( i == 2 && !(tempIn[i] == 0 ))					// case 6th char space
 			{
 				//cout << "Invalid character " << static_cast<int>(tempIn[i]) << " at position " << i << endl;
-				input.clear( ios::failbit ); 						// set bad bit
+				input.clear( ios::failbit ); 					// set bad bit
 			}
 		}
 	}
 
-	if (!cin.fail())													// Assign input to if formatted correctly
+	if (!cin.fail())											// Assign input to if formatted correctly
 	{
 		inState.stateAbbrev[0] = toupper(tempIn[0]);
 		inState.stateAbbrev[1] = toupper(tempIn[1]);
@@ -349,6 +358,66 @@ istream &operator>>( istream &input, Contact::State &inState )
 
 	return input;
 }
+
+//****************************************************************
+//	Stream input for ZIP code
+//****************************************************************
+istream &operator>>( istream &input, Contact::Zipcode &inZip)
+{
+	const int LEN=13;
+	char tempIn[LEN];
+
+	//cout << "Your input is " << input.gcount() << " characters long." << endl;
+
+	input.get( tempIn, LEN );
+	if (!( input.gcount() == 10 || input.gcount() == 5 ) ) 		// case must be 99999 or 99999-9999
+	{
+		cout << "Invalid length: " << input.gcount() << endl;
+		input.clear( ios::failbit );
+	}	// or set bad bit
+	else 														// proper count of characters - checking format
+	{
+		if( input.gcount() == 10)
+		{
+			for(int i=0; i < 11; i++)
+			{
+				if ( (i >= 0 && i <= 4) && !isdigit(tempIn[i]) ) 		// case input must be numeric
+				{
+					cout << "Invalid character " << static_cast<int>(tempIn[i]) << " at position " << i << endl;
+					input.clear( ios::failbit ); 						// set bad bit
+				}
+				if ( i == 5 && !(tempIn[i] == 45 || tempIn[i] == 00 ))	// case 6th char is dash or space
+				{
+					cout << "Invalid character " << static_cast<int>(tempIn[i]) << " at position " << i << endl;
+					input.clear( ios::failbit ); 						// set bad bit
+				}
+				if ( (i >= 6 && i <= 8) && !(isdigit(tempIn[i]) || tempIn[i] == 0) )		// case chars 7-10 must be numeric
+				{
+					cout << "Invalid character " << static_cast<int>(tempIn[i]) << " at position " << i << endl;
+					input.clear( ios::failbit ); 						// set bad bit
+				}
+			}
+		}
+		else
+		{
+			for(int i=0; i < 6; i++)
+			{
+				if ( (i >= 0 && i <= 4) && !isdigit(tempIn[i]) ) 		// case input must be numeric
+				{
+					cout << "Invalid character " << static_cast<int>(tempIn[i]) << " at position " << i << endl;
+					input.clear( ios::failbit ); 						// set bad bit
+				}
+				if ( i == 5 && !(tempIn[i] == 45 || tempIn[i] == 00 ))	// case 6th char is dash or space
+				{
+					cout << "Invalid character " << static_cast<int>(tempIn[i]) << " at position " << i << endl;
+					input.clear( ios::failbit ); 						// set bad bit
+				}
+			}
+		}
+	}
+	return input;
+}
+
 
 
 

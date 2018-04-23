@@ -14,5 +14,9 @@ void clearCIN(void);
 void contactMenu(void);
 Contact contactEntry();
 void displayContact(Contact);
+void addBirthDate(Contact&);
+void addAddress(Contact&);
+void addContactPhones(Contact&);
+void contactEditMenu(Contact&);
 
 #endif /* FUNCTIONS_H_ */
