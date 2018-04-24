@@ -23,7 +23,9 @@ void clearCIN(void) {
 void contactMenu(void) {
 	cout << "1. Enter Contact Information" << endl;
 	cout << "2. Display Contact Information" << endl;
-	cout << "3. Exit the Program" << endl;
+	cout << "3. Edit Contact Information" << endl;
+	cout << "4. Delete Contact Information" << endl;
+	cout << "5. Exit the Program" << endl;
 }//contactMenu
 
 //*******************************************************
@@ -220,5 +222,3 @@ void displayContact(Contact c1)
 
 
 } // displayContact
-
-

@@ -13,6 +13,7 @@ using namespace std;
 
 int main() {
 	char menuChoice;
+	string firstName, lastName;
 	Contact cont1;
 
 	cout << "Welcome to the Contact Management System" << endl;
@@ -34,7 +35,25 @@ int main() {
 					displayContact(cont1);
 					break;
 				}//case 2
-				case('3'): {
+				case('3'):{
+					cout << "Enter the name of the contact you would like to edit\nFirst: ";
+					cin >> firstName;
+					cout << "Last: ";
+					cin >> lastName;
+					cont1 = searchforContact(firstName, lastName);
+					editContact(cont1);
+					break;
+				}
+				case('4'): {
+					cout << "Enter the name of the contact you would like to delete\nFirst: ";
+					cin >> firstName;
+					cout << "Last: ";
+					cin >> lastName;
+					cont1 = searchforContact(firstName, lastName);
+					deleteContact(cont1);
+					break;
+				}
+				case('5'): {
 					cout << endl << "Program is ending - Have a nice day!" << endl;
 					break;
 				}//case 7
