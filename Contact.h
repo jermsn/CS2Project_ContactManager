@@ -7,7 +7,6 @@
 
 #include "Date.h"
 #include "PhoneNumber.h"
-#include "Zipcode.h"
 
 #ifndef CONTACT_H_
 #define CONTACT_H_
@@ -20,6 +19,8 @@ public:
 	// Structures
 	struct State
 	{	char stateAbbrev[3];	};
+	struct Zipcode
+	{	string zip;	};
 	// Constructor
 	Contact();
 	// Accessors
@@ -33,7 +34,7 @@ public:
 	string getAddrLine2() const;		// Return address line 2
 	string getCity() const;				// Return city
 	const string getState() const;		// Return state
-	string getZip() const; 				// Return ZIP code
+	const string getZip() const; 		// Return ZIP code
 	// Mutators
 	void setFirstName(string);			// Set first name of contact
 	void setLastName(string);			// Set last name of contact
@@ -53,7 +54,8 @@ public:
 	// Friends
 	friend ostream &operator << (ostream &, const State &);
 	friend istream &operator >> (istream &, State &);
-
+	friend ostream &operator << (ostream &, const Zipcode &);
+	friend istream &operator >> (istream &, Zipcode &);
 private:
 	char firstName[30];		// First name
 	char lastName[30];		// Last name
