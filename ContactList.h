@@ -2,8 +2,8 @@
 // Created by Garrett on 4/22/18.
 //
 
-#ifndef LAB9_1_CONTACTLIST_H
-#define LAB9_1_CONTACTLIST_H
+#ifndef CONTACTLIST_H
+#define CONTACTLIST_H
 
 #include "Contact.h"
 
@@ -22,4 +22,4 @@ public:
 	void deleteContact(Contact);
 };
 
-#endif //LAB9_1_CONTACTLIST_H
+#endif
