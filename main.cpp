@@ -40,8 +40,8 @@ int main() {
 					cin >> firstName;
 					cout << "Last: ";
 					cin >> lastName;
-					cont1 = searchforContact(firstName, lastName);
-					editContact(cont1);
+					//cont1 = searchforContact(firstName, lastName);
+					//editContact(cont1);
 					break;
 				}
 				case('4'): {
@@ -49,8 +49,8 @@ int main() {
 					cin >> firstName;
 					cout << "Last: ";
 					cin >> lastName;
-					cont1 = searchforContact(firstName, lastName);
-					deleteContact(cont1);
+					//cont1 = searchforContact(firstName, lastName);
+					//deleteContact(cont1);
 					break;
 				}
 				case('5'): {

@@ -469,30 +469,30 @@ istream &operator>>( istream &input, Contact::Email &inEmail)
 {
 	const int LEN=40;
 	char tempIn[LEN];
-	int atPos;
-	int pointPos;
-
-	//for(int i=0; i<LEN; i++)
-	//	cout << tempIn[i] << " at position " << i << endl;
+	int atPos;									// Hold position of @ symbol
+	int pointPos;								// Hold position of final .
 
 	input.get( tempIn, LEN );
 	atPos=0;
 	pointPos=0;
 	for(int i=0; i<LEN; i++)
 	{
-		if (tempIn[i] == 64)
+		if ( tempIn[i] == 64 && atPos == 0 )	// assign position of @ if position is currently 0
 			{ atPos = i; }
-		if (tempIn[i] == 46)
+		if ( tempIn[i] == 46 )					// assign position of last .
 			{ pointPos = i; }
 	}
 
-	//cout << "@ is at position " << atPos << ", and . is at position " << pointPos << endl;
 	if(atPos == 0)
-		{ input.clear( ios::failbit ); cout << "@ fail;\n"; } // no @ character entered
+		{ input.clear( ios::failbit ); } 			// no @ character entered
 	if(pointPos == 0)
-		{ input.clear( ios::failbit ); cout << ". fail;\n"; } // no . character entered
-	//if(atPos > pointPos)
-	//	{ input.clear( ios::failbit ); cout << "fail no . after @;\n"; } // period entered before @
+		{ input.clear( ios::failbit ); } 			// no . character entered
+	if(atPos > pointPos)
+		{ input.clear( ios::failbit ); } 			// period entered before @
+
+	if (!cin.fail())								// Assign input to if formatted correctly
+		{ inEmail.emailAddress = tempIn;	}
+
 	return input;
 }
 

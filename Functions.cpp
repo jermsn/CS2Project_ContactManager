@@ -8,6 +8,7 @@
 #include <iostream>
 #include <iomanip>
 #include "Contact.h"
+#include "ClientContact.h"
 
 //*******************************************************
 // Clear Cin
@@ -256,7 +257,27 @@ void contactEditMenu(Contact& c1)
 //*******************************************************
 Contact contactEntry()
 {
-	Contact c1;
+	Contact *c1;
+
+	int clientType;
+	char typeAnswer;
+	cout << "\nIs this contact a business Client (y/n): ";
+	cin >> typeAnswer;
+
+	clearCIN();
+	if (toupper(typeAnswer) == 'y')
+		clientType = 2;
+	if (toupper(typeAnswer) == 'n')
+		clientType = 1;
+
+
+	switch(clientType)
+	{
+		case('1'):
+			{ c1 = new ClientContact; break; }
+		default:
+			{ c1 = new Contact; }
+	}
 
 	//*******************************************************
 	// Name Entry
@@ -265,18 +286,18 @@ Contact contactEntry()
 	string inputName;
 	cout << "Please enter your contact's first name: ";
 	getline(cin, inputName);
-	c1.setFirstName(inputName);
+	c1->setFirstName(inputName);
 
 	// Prompt for entry of last name
 	inputName="";
 	cout << "Please enter your contact's last name: ";
 	getline(cin, inputName);
-	c1.setLastName(inputName);
+	c1->setLastName(inputName);
 
 	// Prompt for additional information
-	contactEditMenu(c1);
+	contactEditMenu(*c1);
 
-	return c1;
+	return *c1;
 } // contactEntry
 
 
