@@ -108,6 +108,34 @@ void addBirthDate(Contact& c1)
 		cin >> tmpDate; // store date
 	} while ( cin.fail() );
 	c1.setBirthDate(tmpDate);
+
+	// downcast pointer for Client Contact
+	clearCIN();
+	Contact * ptr = &c1;
+	ClientContact *contactPtr = dynamic_cast < ClientContact * > (ptr);
+	if (contactPtr != 0)
+	{
+		Date clientDate;
+			do
+			{
+				if ( cin.fail() )
+				{
+					cin.clear();
+					cin.ignore(32764,'\n');
+					cout << "Invalid data entered. Please enter your client's first contact date in the form of MM/DD/YYYY (or 99/99/9999 if unknown): ";
+				}
+				else
+				{
+					if (contactPtr->getClientSinceDate() != "<Unknown>")
+						cout << contactPtr->getFirstName() << " currently has " << contactPtr->getClientSinceDate() << " as their first contact date." << endl;
+					cout << "Please enter your client's first contact date in the form of MM/DD/YYYY: ";
+				}
+
+				cin >> clientDate; // store date
+			} while ( cin.fail() );
+			contactPtr->setClientSinceDate(clientDate);
+	}// end downcast client date entry
+
 }// addBirthDate
 
 //*******************************************************
@@ -265,15 +293,15 @@ Contact contactEntry()
 	cin >> typeAnswer;
 
 	clearCIN();
-	if (toupper(typeAnswer) == 'y')
+	if (toupper(typeAnswer) == 'Y')
 		clientType = 2;
-	if (toupper(typeAnswer) == 'n')
+	if (toupper(typeAnswer) == 'N')
 		clientType = 1;
 
 
 	switch(clientType)
 	{
-		case('1'):
+		case(2):
 			{ c1 = new ClientContact; break; }
 		default:
 			{ c1 = new Contact; }
