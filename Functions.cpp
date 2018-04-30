@@ -110,6 +110,33 @@ void addBirthDate(Contact& c1)
 }// addBirthDate
 
 //*******************************************************
+// Email Entry
+//*******************************************************
+void addContactEmail(Contact& c1)
+{
+	Contact::Email tmpEmail;
+	do
+	{
+		if ( cin.fail() )
+		{
+			cin.clear();
+			cin.ignore(32764,'\n');
+			cout << "Invalid data entered. Please enter your contact's email in the form of user@domain.tld (or 999@999.999 if unknown): ";
+		}
+		else
+		{
+			if (c1.getEmail() != "<Unknown>")
+				cout << c1.getFirstName() << " currently has " << c1.getEmail() << " as their email." << endl;
+			cout << "Please enter your contact's email in the form of user@domain.tld: ";
+		}
+
+		cin >> tmpEmail; // store date
+	} while ( cin.fail() );
+	//cout << "Email entered was " << tmpEmail.emailAddress << endl;
+	c1.setEmail(tmpEmail);
+}// addContactEmail
+
+//*******************************************************
 // Phone Entry
 //*******************************************************
 void addContactPhones(Contact& c1)
@@ -188,7 +215,8 @@ void contactEditMenu(Contact& c1)
 		cout << "1. Enter Contact Birth Date" << endl;
 		cout << "2. Enter Contact Phone(s)" << endl;
 		cout << "3. Enter Contact Address" << endl;
-		cout << "4. Done editing" << endl;
+		cout << "4. Enter Contact Email" << endl;
+		cout << "5. Done editing" << endl;
 		cout << "Please enter a menu choice: ";
 		cin >> menuChoice;
 		clearCIN();
@@ -207,16 +235,20 @@ void contactEditMenu(Contact& c1)
 				break;
 			}//case 3
 			case('4'): {
-				cout << endl << "Program is ending - Have a nice day!" << endl;
+				addContactEmail(c1);
 				break;
 			}//case 4
+			case('5'): {
+				cout << endl << "Program is ending - Have a nice day!" << endl;
+				break;
+			}//case 5
 			default:  {
-				cout << "=========================++===============" << endl << endl;
-				cout << "Invalid choice. Valid menu options are 1-4. " << endl << endl;
+				cout << "==========================================" << endl << endl;
+				cout << "Invalid choice. Valid menu options are 1-5. " << endl << endl;
 			}
 		}//switch menuChoice
 
-	} while ( menuChoice != '4' ); //while
+	} while ( menuChoice != '5' ); //while
 }
 
 //*******************************************************

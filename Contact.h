@@ -21,20 +21,23 @@ public:
 	{	char stateAbbrev[3];	};
 	struct Zipcode
 	{	string zip;	};
+	struct Email
+	{	string emailAddress;	};
 	// Constructor
 	Contact();
 	// Accessors
 	const char * getFirstName() const;	// Return first name of contact
 	const char * getLastName() const; 	// Return last name of contact
-	string getBirthDate() const;		// Return contact birth date
-	string getHomePhone() const; 		// Return home phone
-	string getMobilePhone() const;		// Return mobile phone
-	string getWorkPhone() const;		// Return work phone
-	string getAddrLine1() const;		// Return address line 1
-	string getAddrLine2() const;		// Return address line 2
-	string getCity() const;				// Return city
+	const string getBirthDate() const;	// Return contact birth date
+	const string getHomePhone() const;	// Return home phone
+	const string getMobilePhone() const;// Return mobile phone
+	const string getWorkPhone() const;	// Return work phone
+	const string getAddrLine1() const;	// Return address line 1
+	const string getAddrLine2() const;	// Return address line 2
+	const string getCity() const;		// Return city
 	const string getState() const;		// Return state
 	const string getZip() const; 		// Return ZIP code
+	const string getEmail() const; 		// Return Email
 	// Mutators
 	void setFirstName(string);			// Set first name of contact
 	void setLastName(string);			// Set last name of contact
@@ -51,11 +54,14 @@ public:
 	void setState(char*);				// Set state
 	void setState(State);				// Set state - copy
 	void setZip(Zipcode);				// Set ZIP code
+	void setEmail(Email);				// Set Email Address
 	// Friends
 	friend ostream &operator << (ostream &, const State &);
 	friend istream &operator >> (istream &, State &);
 	friend ostream &operator << (ostream &, const Zipcode &);
 	friend istream &operator >> (istream &, Zipcode &);
+	friend ostream &operator << (ostream &, const Email &);
+	friend istream &operator >> (istream &, Email &);
 private:
 	char firstName[30];		// First name
 	char lastName[30];		// Last name
@@ -68,6 +74,7 @@ private:
 	string city;			// City of mailing address
 	State state;			// State of mailing address
 	Zipcode zip;			// Zip code of mailing address
+	Email email;			// Email of the contact
 
 
 };

@@ -59,11 +59,11 @@ int main() {
 				}//case 7
 				default:  {
 					cout << "========================================" << endl << endl;
-					cout << "Invalid choice. Valid menu options are 1-3. " << endl << endl;
+					cout << "Invalid choice. Valid menu options are 1-5. " << endl << endl;
 				}
 			}//switch menuChoice
 
-		} while ( menuChoice != '3' ); //while
+		} while ( menuChoice != '5' ); //while
 
 		return 0;
 
