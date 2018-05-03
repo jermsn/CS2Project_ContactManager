@@ -42,12 +42,9 @@ int main() {
 					cin >> firstName;
 					cout << "Last: ";
 					cin >> lastName;
-<<<<<<< HEAD
 					list.editContact(firstName, lastName);
-=======
 					//cont1 = searchforContact(firstName, lastName);
 					//editContact(cont1);
->>>>>>> 1752c7ecd2aa8f5a2587d7f2660a8dd489d75336
 					break;
 				}
 				case('4'): {
@@ -55,12 +52,8 @@ int main() {
 					cin >> firstName;
 					cout << "Last: ";
 					cin >> lastName;
-<<<<<<< HEAD
-					list.deleteContact(firstName, lastName);
-=======
-					//cont1 = searchforContact(firstName, lastName);
+					list.deleteContact(firstName, lastName);		//cont1 = searchforContact(firstName, lastName);
 					//deleteContact(cont1);
->>>>>>> 1752c7ecd2aa8f5a2587d7f2660a8dd489d75336
 					break;
 				}
 				case('5'): {
