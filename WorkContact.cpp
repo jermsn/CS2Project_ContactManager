@@ -3,3 +3,11 @@
 //
 
 #include "WorkContact.h"
+
+void WorkContact::setCompany(string inCompany) {
+	company = inCompany;
+}
+
+string WorkContact::getCompany() const {
+	return company;
+}

@@ -9,6 +9,9 @@
 #include <iomanip>
 #include "Contact.h"
 #include "ClientContact.h"
+#include "PersonalContact.h"
+#include "RelativeContact.h"
+#include "WorkContact.h"
 
 //*******************************************************
 // Clear Cin
@@ -288,24 +291,31 @@ Contact contactEntry()
 	Contact *c1;
 
 	int clientType;
-	char typeAnswer;
-	cout << "\nIs this contact a business Client (y/n): ";
-	cin >> typeAnswer;
-
-	clearCIN();
-	if (toupper(typeAnswer) == 'Y')
-		clientType = 2;
-	if (toupper(typeAnswer) == 'N')
-		clientType = 1;
-
-
-	switch(clientType)
+	do
 	{
-		case(2):
-			{ c1 = new ClientContact; break; }
-		default:
-			{ c1 = new Contact; }
-	}
+		cout << endl;
+		cout << "1. Personal Contact" << endl;
+		cout << "2. Work Contact" << endl;
+		cout << "3. Relative" << endl;
+		cout << "4. Business Client" << endl;
+		cout << "Please choose a contact type from the choices above: ";
+		cin >> clientType;
+		clearCIN();
+
+		switch(clientType)
+		{
+			case(1):
+				{ c1 = new PersonalContact; break; }
+			case(2):
+				{ c1 = new WorkContact; break; }
+			case(3):
+				{ c1 = new RelativeContact; break; }
+			case(4):
+				{ c1 = new ClientContact; break; }
+			default:
+				{ c1 = new PersonalContact; }
+		}
+	} while ( clientType < 1 && clientType > 4);
 
 	//*******************************************************
 	// Name Entry
@@ -322,6 +332,27 @@ Contact contactEntry()
 	getline(cin, inputName);
 	c1->setLastName(inputName);
 
+
+	// downcast pointer for Relative
+	RelativeContact *rContactPtr = dynamic_cast < RelativeContact * > (c1);
+	if (rContactPtr != 0)
+	{
+		string inputRelation;
+		cout << "Please enter your contact's relation to you: ";
+		getline(cin,inputRelation);
+		rContactPtr->setRelationship(inputRelation);
+	}// end downcast client date entry
+
+	// downcast pointer for Work contact
+	WorkContact *wContactPtr = dynamic_cast < WorkContact * > (c1);
+	if (wContactPtr != 0)
+	{
+		string inputCompany;
+		cout << "Please enter your contact's employer: ";
+		getline(cin,inputCompany);
+		wContactPtr->setCompany(inputCompany);
+	}// end downcast client date entry
+
 	// Prompt for additional information
 	contactEditMenu(*c1);
 
@@ -334,42 +365,54 @@ Contact contactEntry()
 //*******************************************************
 void displayContact(Contact c1)
 {
+//	int * contactType;
+//	contactType = new int;
+//	// downcast pointer for Relative
+//	RelativeContact *rContactPtr = dynamic_cast < RelativeContact * > (&c1);
+//	if (rContactPtr != 0)
+//		{ contactType = 3; }
+
 	cout << endl;
-	cout << setw(33) << left << "First Name" <<
-			setw(33) << "Last Name" <<
-			setw(13) << "Birth Date" <<
-			setw(17) << "Home Phone" <<
-			setw(17) << "Mobile Phone" <<
-			setw(17) << "Work Phone" <<
-			setw(30) << "Address Line 1" <<
-			setw(30) << "Address Line 2" <<
-			setw(20) << "City" <<
-			setw(5)  << "State" <<
-			setw(7)  << "ZIP" << endl;
+	string fullName;
+	fullName = string(c1.getFirstName()) + " " + string(c1.getLastName());
+	cout << "Name: " << setw(60) << left << fullName << endl;
+	cout << "Birth Date: " << c1.getBirthDate() << endl;
 
-	cout << setw(33) << left << "==========" <<
-			setw(33) << "===========" <<
-			setw(13) << "==========" <<
-			setw(17) << "==========" <<
-			setw(17) << "============" <<
-			setw(17) << "==========" <<
-			setw(30) << "==========" <<
-			setw(30) << "==========" <<
-			setw(20) << "==========" <<
-			setw(5)  << "====" <<
-			setw(7)  << "=====" <<	endl;
-
-	cout << setw(33) << left << c1.getFirstName() <<
-			setw(33) << c1.getLastName() <<
-			setw(13) << c1.getBirthDate() <<
-			setw(17) << c1.getHomePhone() <<
-			setw(17) << c1.getMobilePhone() <<
-			setw(17) << c1.getWorkPhone() <<
-			setw(30) << c1.getAddrLine1() <<
-			setw(30) << c1.getAddrLine2() <<
-			setw(20) << c1.getCity() <<
-			setw(5)  << c1.getState() <<
-			setw(7)  << c1.getZip() << endl << endl;
+//	cout << setw(33) << left << "First Name" <<
+//			setw(33) << "Last Name" <<
+//			setw(13) << "Birth Date" <<
+//			setw(17) << "Home Phone" <<
+//			setw(17) << "Mobile Phone" <<
+//			setw(17) << "Work Phone" <<
+//			setw(30) << "Address Line 1" <<
+//			setw(30) << "Address Line 2" <<
+//			setw(20) << "City" <<
+//			setw(5)  << "State" <<
+//			setw(7)  << "ZIP" << endl;
+//
+//	cout << setw(33) << left << "==========" <<
+//			setw(33) << "===========" <<
+//			setw(13) << "==========" <<
+//			setw(17) << "==========" <<
+//			setw(17) << "============" <<
+//			setw(17) << "==========" <<
+//			setw(30) << "==========" <<
+//			setw(30) << "==========" <<
+//			setw(20) << "==========" <<
+//			setw(5)  << "====" <<
+//			setw(7)  << "=====" <<	endl;
+//
+//	cout << setw(33) << left << c1.getFirstName() <<
+//			setw(33) << c1.getLastName() <<
+//			setw(13) << c1.getBirthDate() <<
+//			setw(17) << c1.getHomePhone() <<
+//			setw(17) << c1.getMobilePhone() <<
+//			setw(17) << c1.getWorkPhone() <<
+//			setw(30) << c1.getAddrLine1() <<
+//			setw(30) << c1.getAddrLine2() <<
+//			setw(20) << c1.getCity() <<
+//			setw(5)  << c1.getState() <<
+//			setw(7)  << c1.getZip() << endl << endl;
 
 
 } // displayContact
