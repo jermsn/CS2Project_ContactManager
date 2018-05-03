@@ -57,6 +57,7 @@ public:
 	void setState(State);				// Set state - copy
 	void setZip(Zipcode);				// Set ZIP code
 	void setEmail(Email);				// Set Email Address
+	void resetContact();
 	// Friends
 	friend ostream &operator << (ostream &, const State &);
 	friend istream &operator >> (istream &, State &);
@@ -78,7 +79,7 @@ private:
 	Zipcode zip;			// Zip code of mailing address
 	Email email;			// Email of the contact
 
-
+	int typeOfContact;		// Discern type of contact
 };
 
 

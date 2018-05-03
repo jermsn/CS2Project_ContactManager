@@ -18,17 +18,7 @@ using namespace std;
 //****************************************************************
 Contact::Contact()
 {
-	for(int f=0; f<30; f++)
-		firstName[f]=' ';
-	for(int l=0; l<30; l++)
-		lastName[l]=' ';
-	birthDate.setMonth(99, 99, 9999);
-	birthDate.setDay(99, 99, 9999);
-	birthDate.setYear(99, 99, 9999);
-	addrLine1 = "999";
-	addrLine2 = "999";
-	city = "999";
-	email.emailAddress = "999@999.999";
+	resetContact();
 }
 
 
@@ -451,9 +441,6 @@ istream &operator>>( istream &input, Contact::Zipcode &inZip)
 		}
 	}
 	return input;
-<<<<<<< HEAD
-}
-=======
 }
 
 //****************************************************************
@@ -499,8 +486,15 @@ istream &operator>>( istream &input, Contact::Email &inEmail)
 	return input;
 }
 
-
-
-
-
->>>>>>> 1752c7ecd2aa8f5a2587d7f2660a8dd489d75336
+void Contact::resetContact(){
+	for(int f=0; f<30; f++)
+		this->firstName[f]=' ';
+	for(int l=0; l<30; l++)
+		this->lastName[l]=' ';
+	this->birthDate.setMonth(99, 99, 9999);
+	this->birthDate.setDay(99, 99, 9999);
+	this->birthDate.setYear(99, 99, 9999);
+	this->addrLine1 = "999";
+	this->addrLine2 = "999";
+	this->city = "999";
+}

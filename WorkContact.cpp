@@ -3,3 +3,7 @@
 //
 
 #include "WorkContact.h"
+
+int WorkContact::getTypeofContact() const {
+	return typeOfContact;
+}

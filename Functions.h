@@ -19,6 +19,5 @@ void addAddress(Contact&);
 void addContactPhones(Contact&);
 void addContactEmail(Contact&);
 void contactEditMenu(Contact&);
-void resetContact(Contact);
 
 #endif /* FUNCTIONS_H_ */

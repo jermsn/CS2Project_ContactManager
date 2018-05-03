@@ -59,7 +59,7 @@ Contact *ContactList::searchForContact(string firstN, string lastN){
 //*******************************************************
 void ContactList::deleteContact(string firstN, string lastN){
 	Contact *cont1 = searchForContact(firstN, lastN);
-	resetContact(*cont1);
+	cont1->resetContact();
 }
 
 //*******************************************************
