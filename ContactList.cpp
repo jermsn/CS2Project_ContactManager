@@ -26,7 +26,7 @@ ContactList::ContactList(){
 // Destructor for Contact List
 //*******************************************************
 ContactList::~ContactList(){
-	while(!head){
+	while(head){
 		auto currentNode = head; //temp ptr to traverse the list
 
 		while(!currentNode->nextContact){ //find the end
@@ -39,15 +39,33 @@ ContactList::~ContactList(){
 //*******************************************************
 // searchForContact
 //*******************************************************
-Contact searchForContact(string firstN, string lastN){
-	Contact tempCont;
-	cout << "searching";
-	return tempCont;
+Contact *ContactList::searchForContact(string firstN, string lastN){
+	Contact *tempCont;
+	auto currentNode = new listNode;
+	currentNode = head;
+
+	while(currentNode){
+		if(currentNode->currentContact->getFirstName() == firstN) {
+			if (currentNode->currentContact->getLastName() == lastN){
+				tempCont = currentNode->currentContact;
+				return tempCont;
+			}
+		}
+	}
 }
 
 //*******************************************************
 // deleteContact
 //*******************************************************
-void deleteContact(Contact cont1){
-	cout << "contact deleted";
+void ContactList::deleteContact(string firstN, string lastN){
+	Contact *cont1 = searchForContact(firstN, lastN);
+	cont1->resetContact();
+}
+
+//*******************************************************
+// editContact
+//*******************************************************
+void ContactList::editContact(string firstN, string lastN){
+	Contact *cont1 = searchForContact(firstN, lastN);
+	contactEditMenu(reinterpret_cast<Contact&>(cont1));
 }

@@ -9,12 +9,14 @@
 #include <iostream>
 #include "Contact.h"
 #include "Functions.h"
+#include "ContactList.h"
 using namespace std;
 
 int main() {
 	char menuChoice;
 	string firstName, lastName;
 	Contact cont1;
+	ContactList list;
 
 	cout << "Welcome to the Contact Management System" << endl;
 	cout << "========================================" << endl;
@@ -40,8 +42,12 @@ int main() {
 					cin >> firstName;
 					cout << "Last: ";
 					cin >> lastName;
+<<<<<<< HEAD
+					list.editContact(firstName, lastName);
+=======
 					//cont1 = searchforContact(firstName, lastName);
 					//editContact(cont1);
+>>>>>>> 1752c7ecd2aa8f5a2587d7f2660a8dd489d75336
 					break;
 				}
 				case('4'): {
@@ -49,8 +55,12 @@ int main() {
 					cin >> firstName;
 					cout << "Last: ";
 					cin >> lastName;
+<<<<<<< HEAD
+					list.deleteContact(firstName, lastName);
+=======
 					//cont1 = searchforContact(firstName, lastName);
 					//deleteContact(cont1);
+>>>>>>> 1752c7ecd2aa8f5a2587d7f2660a8dd489d75336
 					break;
 				}
 				case('5'): {

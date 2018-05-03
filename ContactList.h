@@ -6,6 +6,7 @@
 #define CONTACTLIST_H
 
 #include "Contact.h"
+#include "Functions.h"
 
 class ContactList {
 private:
@@ -18,8 +19,9 @@ private:
 public:
 	ContactList();
 	~ContactList();
-	Contact searchForContact(string, string);
-	void deleteContact(Contact);
+	Contact *searchForContact(string, string);
+	void deleteContact(string, string);
+	void editContact(string, string);
 };
 
 #endif

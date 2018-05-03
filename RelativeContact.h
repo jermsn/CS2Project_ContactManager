@@ -10,7 +10,10 @@
 class RelativeContact : public Contact{
 private:
 	string relationship;
+	int typeOfContact;
 public:
+	RelativeContact()
+	{typeOfContact = 3;}
 	void setRelationship(string);
 	string getRelationship() const;
 };

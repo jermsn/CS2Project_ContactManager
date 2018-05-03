@@ -8,7 +8,12 @@
 #include "Contact.h"
 
 class PersonalContact : public Contact{
-
+public:
+	PersonalContact()
+	{typeOfContact = 1;}
+	int getTypeOfContact() const;
+private:
+	int typeOfContact;
 };
 
 #endif //GROUP_PROJECT_PERSONALCONTACT_H

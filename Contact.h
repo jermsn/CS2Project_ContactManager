@@ -40,6 +40,7 @@ public:
 	const string getState() const;		// Return state
 	const string getZip() const; 		// Return ZIP code
 	const string getEmail() const; 		// Return Email
+	const int getTypeOfContact() const; // Return Type of contact
 	// Mutators
 	void setFirstName(string);			// Set first name of contact
 	void setLastName(string);			// Set last name of contact
@@ -57,6 +58,7 @@ public:
 	void setState(State);				// Set state - copy
 	void setZip(Zipcode);				// Set ZIP code
 	void setEmail(Email);				// Set Email Address
+	void resetContact();
 	// Friends
 	friend ostream &operator << (ostream &, const State &);
 	friend istream &operator >> (istream &, State &);
@@ -78,7 +80,7 @@ private:
 	Zipcode zip;			// Zip code of mailing address
 	Email email;			// Email of the contact
 
-
+	int typeOfContact;		// Discern type of contact
 };
 
 
