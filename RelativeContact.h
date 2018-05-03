@@ -16,6 +16,7 @@ public:
 	{typeOfContact = 3;}
 	void setRelationship(string);
 	string getRelationship() const;
+	int getTypeOfContact() const;
 };
 
 #endif //GROUP_PROJECT_RELATIVECONTACT_H

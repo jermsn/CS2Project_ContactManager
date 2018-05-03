@@ -11,7 +11,7 @@ class WorkContact : public Contact{
 public:
 	WorkContact()
 	{typeOfContact = 2;}
-	int getTypeofContact() const;
+	int getTypeOfContact() const;
 private:
 	int typeOfContact;
 };
