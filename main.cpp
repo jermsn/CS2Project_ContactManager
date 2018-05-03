@@ -42,10 +42,14 @@ int main() {
 					cin >> firstName;
 					cout << "Last: ";
 					cin >> lastName;
+<<<<<<< HEAD
 
 					list.editContact(firstName, lastName);
 					list.editContact(firstName, lastName);
 
+=======
+					list.editContact(firstName, lastName);
+>>>>>>> branch 'master' of https://github.com/jermsn/CS2Project_ContactManager.git
 					//cont1 = searchforContact(firstName, lastName);
 					//editContact(cont1);
 
@@ -56,6 +60,7 @@ int main() {
 					cin >> firstName;
 					cout << "Last: ";
 					cin >> lastName;
+<<<<<<< HEAD
 
 					list.deleteContact(firstName, lastName);
 
@@ -63,6 +68,9 @@ int main() {
 
 					list.deleteContact(firstName, lastName);		//cont1 = searchforContact(firstName, lastName);
 
+=======
+					list.deleteContact(firstName, lastName);		//cont1 = searchforContact(firstName, lastName);
+>>>>>>> branch 'master' of https://github.com/jermsn/CS2Project_ContactManager.git
 					//deleteContact(cont1);
 
 					break;
