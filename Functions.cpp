@@ -292,3 +292,16 @@ void displayContact(Contact c1)
 
 
 } // displayContact
+
+void Contact::resetContact(Contact cont1){
+	for(int f=0; f<30; f++)
+		cont1.firstName[f]=' ';
+	for(int l=0; l<30; l++)
+		cont1.lastName[l]=' ';
+	cont1.birthDate.setMonth(99, 99, 9999);
+	cont1.birthDate.setDay(99, 99, 9999);
+	cont1.birthDate.setYear(99, 99, 9999);
+	cont1.addrLine1 = "999";
+	cont1.addrLine2 = "999";
+	cont1.city = "999";
+}

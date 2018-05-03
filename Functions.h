@@ -18,5 +18,6 @@ void addBirthDate(Contact&);
 void addAddress(Contact&);
 void addContactPhones(Contact&);
 void contactEditMenu(Contact&);
+void resetContact(Contact);
 
 #endif /* FUNCTIONS_H_ */

@@ -417,7 +417,3 @@ istream &operator>>( istream &input, Contact::Zipcode &inZip)
 	}
 	return input;
 }
-
-
-
-
