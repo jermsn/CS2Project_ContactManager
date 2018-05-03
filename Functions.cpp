@@ -377,7 +377,7 @@ void displayContact(Contact c1)
 	fullName = string(c1.getFirstName()) + " " + string(c1.getLastName());
 	cout << "Name: " << setw(60) << left << fullName << endl;
 	cout << "Birth Date: " << c1.getBirthDate() << endl;
-	if (c1.)
+
 
 //	cout << setw(33) << left << "First Name" <<
 //			setw(33) << "Last Name" <<

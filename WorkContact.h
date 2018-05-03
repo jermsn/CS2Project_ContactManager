@@ -8,29 +8,16 @@
 #include "Contact.h"
 
 class WorkContact : public Contact{
-<<<<<<< HEAD
-<<<<<<< HEAD
-private:
-	string company;
-public:
-	void setCompany(string);
-	string getCompany() const;
-=======
-public:
-	WorkContact()
-	{typeOfContact = 2;}
-	int getTypeofContact() const;
-private:
-	int typeOfContact;
->>>>>>> branch 'master' of https://github.com/jermsn/CS2Project_ContactManager.git
-=======
+
 public:
 	WorkContact()
 	{typeOfContact = 2;}
 	int getTypeOfContact() const;
+	void setCompany(string);
+	string getCompany() const;
 private:
 	int typeOfContact;
->>>>>>> branch 'master' of https://github.com/jermsn/CS2Project_ContactManager.git
+	string company;
 };
 
 #endif //GROUP_PROJECT_WORKCONTACT_H
