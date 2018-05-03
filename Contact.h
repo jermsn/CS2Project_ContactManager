@@ -40,7 +40,11 @@ public:
 	const string getState() const;		// Return state
 	const string getZip() const; 		// Return ZIP code
 	const string getEmail() const; 		// Return Email
+<<<<<<< HEAD
 	const int getTypeOfContact() const; // Return Type of contact
+=======
+	virtual int getTypeOfContact() const;
+>>>>>>> branch 'master' of https://github.com/jermsn/CS2Project_ContactManager.git
 	// Mutators
 	void setFirstName(string);			// Set first name of contact
 	void setLastName(string);			// Set last name of contact

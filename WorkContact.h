@@ -9,6 +9,7 @@
 
 class WorkContact : public Contact{
 <<<<<<< HEAD
+<<<<<<< HEAD
 private:
 	string company;
 public:
@@ -19,6 +20,14 @@ public:
 	WorkContact()
 	{typeOfContact = 2;}
 	int getTypeofContact() const;
+private:
+	int typeOfContact;
+>>>>>>> branch 'master' of https://github.com/jermsn/CS2Project_ContactManager.git
+=======
+public:
+	WorkContact()
+	{typeOfContact = 2;}
+	int getTypeOfContact() const;
 private:
 	int typeOfContact;
 >>>>>>> branch 'master' of https://github.com/jermsn/CS2Project_ContactManager.git

@@ -5,6 +5,7 @@
 #include "WorkContact.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void WorkContact::setCompany(string inCompany) {
 	company = inCompany;
 }
@@ -12,6 +13,11 @@ void WorkContact::setCompany(string inCompany) {
 string WorkContact::getCompany() const {
 	return company;
 }
+=======
+int WorkContact::getTypeofContact() const {
+	return typeOfContact;
+}
+>>>>>>> branch 'master' of https://github.com/jermsn/CS2Project_ContactManager.git
 =======
 int WorkContact::getTypeofContact() const {
 	return typeOfContact;

@@ -43,8 +43,12 @@ int main() {
 					cout << "Last: ";
 					cin >> lastName;
 <<<<<<< HEAD
+<<<<<<< HEAD
 					list.editContact(firstName, lastName);
 =======
+=======
+					list.editContact(firstName, lastName);
+>>>>>>> branch 'master' of https://github.com/jermsn/CS2Project_ContactManager.git
 					//cont1 = searchforContact(firstName, lastName);
 					//editContact(cont1);
 >>>>>>> 1752c7ecd2aa8f5a2587d7f2660a8dd489d75336
@@ -56,9 +60,13 @@ int main() {
 					cout << "Last: ";
 					cin >> lastName;
 <<<<<<< HEAD
+<<<<<<< HEAD
 					list.deleteContact(firstName, lastName);
 =======
 					//cont1 = searchforContact(firstName, lastName);
+=======
+					list.deleteContact(firstName, lastName);		//cont1 = searchforContact(firstName, lastName);
+>>>>>>> branch 'master' of https://github.com/jermsn/CS2Project_ContactManager.git
 					//deleteContact(cont1);
 >>>>>>> 1752c7ecd2aa8f5a2587d7f2660a8dd489d75336
 					break;
