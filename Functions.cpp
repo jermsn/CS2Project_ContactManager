@@ -8,6 +8,7 @@
 #include <iostream>
 #include <iomanip>
 #include "Contact.h"
+#include "ClientContact.h"
 
 //*******************************************************
 // Clear Cin
@@ -107,7 +108,62 @@ void addBirthDate(Contact& c1)
 		cin >> tmpDate; // store date
 	} while ( cin.fail() );
 	c1.setBirthDate(tmpDate);
+
+	// downcast pointer for Client Contact
+	clearCIN();
+	Contact * ptr = &c1;
+	ClientContact *contactPtr = dynamic_cast < ClientContact * > (ptr);
+	if (contactPtr != 0)
+	{
+		Date clientDate;
+			do
+			{
+				if ( cin.fail() )
+				{
+					cin.clear();
+					cin.ignore(32764,'\n');
+					cout << "Invalid data entered. Please enter your client's first contact date in the form of MM/DD/YYYY (or 99/99/9999 if unknown): ";
+				}
+				else
+				{
+					if (contactPtr->getClientSinceDate() != "<Unknown>")
+						cout << contactPtr->getFirstName() << " currently has " << contactPtr->getClientSinceDate() << " as their first contact date." << endl;
+					cout << "Please enter your client's first contact date in the form of MM/DD/YYYY: ";
+				}
+
+				cin >> clientDate; // store date
+			} while ( cin.fail() );
+			contactPtr->setClientSinceDate(clientDate);
+	}// end downcast client date entry
+
 }// addBirthDate
+
+//*******************************************************
+// Email Entry
+//*******************************************************
+void addContactEmail(Contact& c1)
+{
+	Contact::Email tmpEmail;
+	do
+	{
+		if ( cin.fail() )
+		{
+			cin.clear();
+			cin.ignore(32764,'\n');
+			cout << "Invalid data entered. Please enter your contact's email in the form of user@domain.tld (or 999@999.999 if unknown): ";
+		}
+		else
+		{
+			if (c1.getEmail() != "<Unknown>")
+				cout << c1.getFirstName() << " currently has " << c1.getEmail() << " as their email." << endl;
+			cout << "Please enter your contact's email in the form of user@domain.tld: ";
+		}
+
+		cin >> tmpEmail; // store date
+	} while ( cin.fail() );
+	//cout << "Email entered was " << tmpEmail.emailAddress << endl;
+	c1.setEmail(tmpEmail);
+}// addContactEmail
 
 //*******************************************************
 // Phone Entry
@@ -188,7 +244,8 @@ void contactEditMenu(Contact& c1)
 		cout << "1. Enter Contact Birth Date" << endl;
 		cout << "2. Enter Contact Phone(s)" << endl;
 		cout << "3. Enter Contact Address" << endl;
-		cout << "4. Done editing" << endl;
+		cout << "4. Enter Contact Email" << endl;
+		cout << "5. Done editing" << endl;
 		cout << "Please enter a menu choice: ";
 		cin >> menuChoice;
 		clearCIN();
@@ -207,16 +264,20 @@ void contactEditMenu(Contact& c1)
 				break;
 			}//case 3
 			case('4'): {
-				cout << endl << "Program is ending - Have a nice day!" << endl;
+				addContactEmail(c1);
 				break;
 			}//case 4
+			case('5'): {
+				cout << endl << "Program is ending - Have a nice day!" << endl;
+				break;
+			}//case 5
 			default:  {
-				cout << "=========================++===============" << endl << endl;
-				cout << "Invalid choice. Valid menu options are 1-4. " << endl << endl;
+				cout << "==========================================" << endl << endl;
+				cout << "Invalid choice. Valid menu options are 1-5. " << endl << endl;
 			}
 		}//switch menuChoice
 
-	} while ( menuChoice != '4' ); //while
+	} while ( menuChoice != '5' ); //while
 }
 
 //*******************************************************
@@ -224,7 +285,27 @@ void contactEditMenu(Contact& c1)
 //*******************************************************
 Contact contactEntry()
 {
-	Contact c1;
+	Contact *c1;
+
+	int clientType;
+	char typeAnswer;
+	cout << "\nIs this contact a business Client (y/n): ";
+	cin >> typeAnswer;
+
+	clearCIN();
+	if (toupper(typeAnswer) == 'Y')
+		clientType = 2;
+	if (toupper(typeAnswer) == 'N')
+		clientType = 1;
+
+
+	switch(clientType)
+	{
+		case(2):
+			{ c1 = new ClientContact; break; }
+		default:
+			{ c1 = new Contact; }
+	}
 
 	//*******************************************************
 	// Name Entry
@@ -233,18 +314,18 @@ Contact contactEntry()
 	string inputName;
 	cout << "Please enter your contact's first name: ";
 	getline(cin, inputName);
-	c1.setFirstName(inputName);
+	c1->setFirstName(inputName);
 
 	// Prompt for entry of last name
 	inputName="";
 	cout << "Please enter your contact's last name: ";
 	getline(cin, inputName);
-	c1.setLastName(inputName);
+	c1->setLastName(inputName);
 
 	// Prompt for additional information
-	contactEditMenu(c1);
+	contactEditMenu(*c1);
 
-	return c1;
+	return *c1;
 } // contactEntry
 
 
@@ -292,6 +373,7 @@ void displayContact(Contact c1)
 
 
 } // displayContact
+<<<<<<< HEAD
 
 void Contact::resetContact(Contact cont1){
 	for(int f=0; f<30; f++)
@@ -305,3 +387,5 @@ void Contact::resetContact(Contact cont1){
 	cont1.addrLine2 = "999";
 	cont1.city = "999";
 }
+=======
+>>>>>>> 1752c7ecd2aa8f5a2587d7f2660a8dd489d75336

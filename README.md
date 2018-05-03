@@ -11,6 +11,7 @@ This project will store contacts of the following types (all of which inherit fr
 The following concepts covered this semester have been implemented:
 - Input validation for user defined types: Dates and Phone Numbers
 - Exception handling: Dates give specific error messages for exceptions 
+- Polymorphism and conditional functions via downcasting: First Contact Date for Client Contacts
 
 
 Future efforts will include writing to a binary file an implementing a linked list for STL compatibility.

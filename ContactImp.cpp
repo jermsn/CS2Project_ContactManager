@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <string.h>
+#include <sstream>
 #include "Contact.h"
 #include "Functions.h"
 
@@ -27,6 +28,7 @@ Contact::Contact()
 	addrLine1 = "999";
 	addrLine2 = "999";
 	city = "999";
+	email.emailAddress = "999@999.999";
 }
 
 
@@ -51,7 +53,7 @@ const char * Contact::getLastName() const
 //****************************************************************
 //	Accessor for Birth Date
 //****************************************************************
-string Contact::getBirthDate() const
+const string Contact::getBirthDate() const
 {
 	string tmpStr;
 
@@ -66,7 +68,7 @@ string Contact::getBirthDate() const
 //****************************************************************
 //	Accessor for Home Phone
 //****************************************************************
-string Contact::getHomePhone() const
+const string Contact::getHomePhone() const
 {
 	return homePhone.getPhoneNumber();
 }
@@ -74,7 +76,7 @@ string Contact::getHomePhone() const
 //****************************************************************
 //	Accessor for Mobile Phone
 //****************************************************************
-string Contact::getMobilePhone() const
+const string Contact::getMobilePhone() const
 {
 	return mobilePhone.getPhoneNumber();
 }
@@ -82,7 +84,7 @@ string Contact::getMobilePhone() const
 //****************************************************************
 //	Accessor for Work Phone
 //****************************************************************
-string Contact::getWorkPhone() const
+const string Contact::getWorkPhone() const
 {
 	return workPhone.getPhoneNumber();
 }
@@ -90,7 +92,7 @@ string Contact::getWorkPhone() const
 //****************************************************************
 //	Accessor for Address Line 1
 //****************************************************************
-string Contact::getAddrLine1() const
+const string Contact::getAddrLine1() const
 {
 	string tmpStr;
 	if (addrLine1 != "999")
@@ -104,7 +106,7 @@ string Contact::getAddrLine1() const
 //****************************************************************
 //	Accessor for Address Line 2
 //****************************************************************
-string Contact::getAddrLine2() const
+const string Contact::getAddrLine2() const
 {
 	string tmpStr;
 	if (addrLine2 != "999")
@@ -118,7 +120,7 @@ string Contact::getAddrLine2() const
 //****************************************************************
 //	Accessor for City
 //****************************************************************
-string Contact::getCity() const
+const string Contact::getCity() const
 {
 	string tmpStr;
 	if (city != "999")
@@ -147,6 +149,21 @@ const string Contact::getZip() const
 	string tmpStr;
 	if (zip.zip != "999")
 		tmpStr = zip.zip;
+	else
+		tmpStr = "<Unknown>";
+
+	return tmpStr;
+}
+
+
+//****************************************************************
+//	Accessor for Email
+//****************************************************************
+const string Contact::getEmail() const
+{
+	string tmpStr;
+	if (email.emailAddress != "999@999.999")
+		tmpStr = email.emailAddress;
 	else
 		tmpStr = "<Unknown>";
 
@@ -308,6 +325,15 @@ void Contact::setZip(Zipcode inZip)
 
 
 //****************************************************************
+//	Mutator for Email Address
+//****************************************************************
+void Contact::setEmail(Email inEmail)
+{
+	email = inEmail;
+}
+
+
+//****************************************************************
 //	Stream output for State
 //****************************************************************
 ostream &operator << (ostream & output, const Contact::State &st)
@@ -357,6 +383,15 @@ istream &operator>>( istream &input, Contact::State &inState )
 	}
 
 	return input;
+}
+
+//****************************************************************
+//	Stream output for ZIP code
+//****************************************************************
+ostream &operator << (ostream & output, const Contact::Zipcode &outZip)
+{
+	output << outZip.zip;
+	return output;
 }
 
 //****************************************************************
@@ -416,4 +451,56 @@ istream &operator>>( istream &input, Contact::Zipcode &inZip)
 		}
 	}
 	return input;
+<<<<<<< HEAD
 }
+=======
+}
+
+//****************************************************************
+//	Stream output for Email
+//****************************************************************
+ostream &operator << (ostream & output, const Contact::Email &outEmail)
+{
+	output << outEmail.emailAddress;
+	return output;
+}
+
+//****************************************************************
+//	Stream input for Email
+//****************************************************************
+istream &operator>>( istream &input, Contact::Email &inEmail)
+{
+	const int LEN=40;
+	char tempIn[LEN];
+	int atPos;									// Hold position of @ symbol
+	int pointPos;								// Hold position of final .
+
+	input.get( tempIn, LEN );
+	atPos=0;
+	pointPos=0;
+	for(int i=0; i<LEN; i++)
+	{
+		if ( tempIn[i] == 64 && atPos == 0 )	// assign position of @ if position is currently 0
+			{ atPos = i; }
+		if ( tempIn[i] == 46 )					// assign position of last .
+			{ pointPos = i; }
+	}
+
+	if(atPos == 0)
+		{ input.clear( ios::failbit ); } 			// no @ character entered
+	if(pointPos == 0)
+		{ input.clear( ios::failbit ); } 			// no . character entered
+	if(atPos > pointPos)
+		{ input.clear( ios::failbit ); } 			// period entered before @
+
+	if (!cin.fail())								// Assign input to if formatted correctly
+		{ inEmail.emailAddress = tempIn;	}
+
+	return input;
+}
+
+
+
+
+
+>>>>>>> 1752c7ecd2aa8f5a2587d7f2660a8dd489d75336

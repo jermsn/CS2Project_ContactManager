@@ -42,7 +42,12 @@ int main() {
 					cin >> firstName;
 					cout << "Last: ";
 					cin >> lastName;
+<<<<<<< HEAD
 					list.editContact(firstName, lastName);
+=======
+					//cont1 = searchforContact(firstName, lastName);
+					//editContact(cont1);
+>>>>>>> 1752c7ecd2aa8f5a2587d7f2660a8dd489d75336
 					break;
 				}
 				case('4'): {
@@ -50,7 +55,12 @@ int main() {
 					cin >> firstName;
 					cout << "Last: ";
 					cin >> lastName;
+<<<<<<< HEAD
 					list.deleteContact(firstName, lastName);
+=======
+					//cont1 = searchforContact(firstName, lastName);
+					//deleteContact(cont1);
+>>>>>>> 1752c7ecd2aa8f5a2587d7f2660a8dd489d75336
 					break;
 				}
 				case('5'): {
@@ -59,11 +69,11 @@ int main() {
 				}//case 7
 				default:  {
 					cout << "========================================" << endl << endl;
-					cout << "Invalid choice. Valid menu options are 1-3. " << endl << endl;
+					cout << "Invalid choice. Valid menu options are 1-5. " << endl << endl;
 				}
 			}//switch menuChoice
 
-		} while ( menuChoice != '3' ); //while
+		} while ( menuChoice != '5' ); //while
 
 		return 0;
 
