@@ -4,6 +4,6 @@
 
 #include "WorkContact.h"
 
-int WorkContact::getTypeofContact() const {
+int WorkContact::getTypeOfContact() const {
 	return typeOfContact;
 }
