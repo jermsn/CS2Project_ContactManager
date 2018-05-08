@@ -16,16 +16,14 @@ public:
 		clientSinceDate.setMonth(99, 99, 9999);
 		clientSinceDate.setDay(99, 99, 9999);
 		clientSinceDate.setYear(99, 99, 9999);
-		typeOfContact = 4;
+		this->setTypeOfContact(4);
 	}
 	// Accessors
 	const string getClientSinceDate() const;// Return client since date
-	int getTypeOfContact() const;
 	// Mutators
 	void setClientSinceDate(Date);				// Set birth date
 private:
-	Date clientSinceDate;
-	int typeOfContact;// Date of initial contact with client
+	Date clientSinceDate;// Date of initial contact with client
 };
 
 #endif //GROUP_PROJECT_CLIENTCONTACT_H

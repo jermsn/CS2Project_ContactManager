@@ -38,9 +38,14 @@ public:
 	const string getState() const;		// Return state
 	const string getZip() const; 		// Return ZIP code
 	const string getEmail() const; 		// Return Email
+<<<<<<< HEAD
+	int getTypeOfContactInt() const;
+	string getTypeofContactStr();
+=======
 	virtual int getTypeOfContact() const;
 
 
+>>>>>>> ece71bcfd5534185f35d5f9a27bd2397f7a68b7a
 	// Mutators
 	void setFirstName(string);			// Set first name of contact
 	void setLastName(string);			// Set last name of contact
@@ -58,6 +63,7 @@ public:
 	void setState(State);				// Set state - copy
 	void setZip(Zipcode);				// Set ZIP code
 	void setEmail(Email);				// Set Email Address
+	void setTypeOfContact(int);
 	void resetContact();
 	// Friends
 	friend ostream &operator << (ostream &, const State &);

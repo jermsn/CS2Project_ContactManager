@@ -21,6 +21,12 @@ Contact::Contact()
 	resetContact();
 }
 
+//****************************************************************
+//	Destructor for base class
+//****************************************************************
+Contact::~Contact() { }
+
+
 
 //****************************************************************
 //	Accessor for First Name
@@ -496,6 +502,3 @@ void Contact::resetContact(){
 	this->addrLine2 = "999";
 	this->city = "999";
 }
-
-
-int Contact::getTypeOfContact() const { return 0; }
