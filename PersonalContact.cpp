@@ -3,8 +3,7 @@
 //
 #include "PersonalContact.h"
 
-// Destructor
-PersonalContact::~PersonalContact() {}
+using namespace std;
 
 int PersonalContact::getTypeOfContact() const {
 	return typeOfContact;

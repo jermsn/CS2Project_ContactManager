@@ -54,6 +54,7 @@ Contact *ContactList::searchForContact(string firstN, string lastN){
 	}
 }
 
+
 //*******************************************************
 // deleteContact
 //*******************************************************
@@ -67,5 +68,5 @@ void ContactList::deleteContact(string firstN, string lastN){
 //*******************************************************
 void ContactList::editContact(string firstN, string lastN){
 	Contact *cont1 = searchForContact(firstN, lastN);
-	contactEditMenu(reinterpret_cast<Contact&>(cont1));
+	contactEditMenu(reinterpret_cast< Contact& >(cont1));
 }

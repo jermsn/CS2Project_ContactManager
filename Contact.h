@@ -25,8 +25,6 @@ public:
 	{	string emailAddress;	};
 	// Constructor
 	Contact();
-	// Destructor
-	virtual ~Contact();
 	// Accessors
 	const char * getFirstName() const;	// Return first name of contact
 	const char * getLastName() const; 	// Return last name of contact
