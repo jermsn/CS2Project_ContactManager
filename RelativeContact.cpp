@@ -11,7 +11,3 @@ void RelativeContact::setRelationship(string r) {
 string RelativeContact::getRelationship() const {
 	return relationship;
 }
-
-int RelativeContact::getTypeOfContact() const {
-	return typeOfContact;
-}

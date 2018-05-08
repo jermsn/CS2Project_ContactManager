@@ -10,10 +10,7 @@
 class WorkContact : public Contact{
 public:
 	WorkContact()
-	{typeOfContact = 2;}
-	int getTypeOfContact() const;
-private:
-	int typeOfContact;
+	{this->setTypeOfContact(2);}
 };
 
 #endif //GROUP_PROJECT_WORKCONTACT_H

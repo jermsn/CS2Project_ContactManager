@@ -498,3 +498,24 @@ void Contact::resetContact(){
 	this->addrLine2 = "999";
 	this->city = "999";
 }
+
+int Contact::getTypeOfContactInt() const {
+	return typeOfContact;
+}
+
+string Contact::getTypeofContactStr() {
+	if(typeOfContact == 1)
+		return "Personal";
+	else if(typeOfContact == 2)
+		return "Work";
+	else if(typeOfContact == 3)
+		return "Relative";
+	else if(typeOfContact == 4)
+		return "Client";
+	else
+		return "Error";
+}
+
+void Contact::setTypeOfContact(int t) {
+	typeOfContact = t;
+}

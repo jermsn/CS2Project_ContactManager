@@ -10,13 +10,11 @@
 class RelativeContact : public Contact{
 private:
 	string relationship;
-	int typeOfContact;
 public:
 	RelativeContact()
-	{typeOfContact = 3;}
+	{this->setTypeOfContact(3);}
 	void setRelationship(string);
 	string getRelationship() const;
-	int getTypeOfContact() const;
 };
 
 #endif //GROUP_PROJECT_RELATIVECONTACT_H
