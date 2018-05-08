@@ -12,8 +12,11 @@ private:
 	string relationship;
 	int typeOfContact;
 public:
+	// Constructor
 	RelativeContact()
 	{typeOfContact = 3;}
+	// Destructor
+	~RelativeContact();
 	void setRelationship(string);
 	string getRelationship() const;
 	int getTypeOfContact() const;

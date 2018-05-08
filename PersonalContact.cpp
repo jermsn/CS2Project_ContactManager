@@ -3,6 +3,9 @@
 //
 #include "PersonalContact.h"
 
+// Destructor
+PersonalContact::~PersonalContact() {}
+
 int PersonalContact::getTypeOfContact() const {
 	return typeOfContact;
 }

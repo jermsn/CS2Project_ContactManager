@@ -11,6 +11,8 @@ class PersonalContact : public Contact{
 public:
 	PersonalContact()
 	{typeOfContact = 1;}
+	// Destructor
+	~PersonalContact();
 	int getTypeOfContact() const;
 private:
 	int typeOfContact;
