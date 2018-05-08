@@ -18,6 +18,8 @@ public:
 		clientSinceDate.setYear(99, 99, 9999);
 		this->setTypeOfContact(4);
 	}
+	// Destructor
+	~ClientContact();
 	// Accessors
 	const string getClientSinceDate() const;// Return client since date
 	// Mutators
