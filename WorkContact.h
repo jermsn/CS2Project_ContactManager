@@ -13,13 +13,8 @@ public:
 	// Constructor
 	WorkContact()
 	{this->setTypeOfContact(2);}
-<<<<<<< HEAD
 	// Destructor
 	~WorkContact();
-=======
-=======
-	{typeOfContact = 2;}
->>>>>>> fc4444ce10276da7b4f91247975b684753ad26a2
 	int getTypeOfContact() const;
 	void setCompany(string);
 	string getCompany() const;

@@ -25,6 +25,8 @@ public:
 	{	string emailAddress;	};
 	// Constructor
 	Contact();
+	// Destructor
+	~Contact();
 	// Accessors
 	const char * getFirstName() const;	// Return first name of contact
 	const char * getLastName() const; 	// Return last name of contact
@@ -80,7 +82,6 @@ private:
 	State state;			// State of mailing address
 	Zipcode zip;			// Zip code of mailing address
 	Email email;			// Email of the contact
-
 	int typeOfContact;		// Discern type of contact
 };
 
