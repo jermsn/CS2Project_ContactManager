@@ -29,12 +29,4 @@ const string ClientContact::getClientSinceDate() const
 void ClientContact::setClientSinceDate(Date inputDate)
 {
 	clientSinceDate = inputDate;
-<<<<<<< HEAD
 }
-=======
-}
-
-int ClientContact::getTypeOfContact() const {
-	return typeOfContact;
-}
->>>>>>> ece71bcfd5534185f35d5f9a27bd2397f7a68b7a
