@@ -4,7 +4,7 @@
 
 #include "WorkContact.h"
 
-<<<<<<< HEAD
+
 void WorkContact::setCompany(string inCompany) {
 	company = inCompany;
 }
@@ -17,8 +17,3 @@ int WorkContact::getTypeOfContact() const {
 	return typeOfContact;
 }
 
-=======
-int WorkContact::getTypeOfContact() const {
-	return typeOfContact;
-}
->>>>>>> branch 'master' of https://github.com/jermsn/CS2Project_ContactManager.git
