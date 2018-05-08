@@ -4,9 +4,6 @@
 
 #include "WorkContact.h"
 
-// Destructor
-WorkContact::~WorkContact() {}
-
 void WorkContact::setCompany(string inCompany) {
 	company = inCompany;
 }

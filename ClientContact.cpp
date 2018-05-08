@@ -4,9 +4,6 @@
 
 #include "ClientContact.h"
 
-// Destructor
-ClientContact::~ClientContact() {}
-
 //****************************************************************
 //	Accessor for Client Since Date
 //****************************************************************

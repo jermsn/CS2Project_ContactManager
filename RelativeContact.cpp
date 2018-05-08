@@ -4,9 +4,6 @@
 
 #include "RelativeContact.h"
 
-// Destructor
-RelativeContact::~RelativeContact() {}
-
 void RelativeContact::setRelationship(string r) {
 	relationship = r;
 }

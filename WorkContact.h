@@ -13,8 +13,6 @@ public:
 	// Constructor
 	WorkContact()
 	{typeOfContact = 2;}
-	// Destructor
-	~WorkContact();
 	int getTypeOfContact() const;
 	void setCompany(string);
 	string getCompany() const;
