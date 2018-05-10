@@ -141,15 +141,10 @@ const string Contact::getState() const
 const string Contact::getZip() const
 {
 	string tmpStr;
-	tmpStr = zip.zip;
-	cout << zip.zip;
-//	if (zip.zip != "999")
-//	{
-//		tmpStr = zip.zip;
-//
-//	}
-//	else
-//		tmpStr = "<Unknown>";
+	if (zip.zip != "999")
+		tmpStr = zip.zip;
+	else
+		tmpStr = "<Unknown>";
 
 	return tmpStr;
 }
@@ -466,6 +461,10 @@ istream &operator>>( istream &input, Contact::Zipcode &inZip)
 			}
 		}
 	}
+
+	if (!cin.fail())								// Assign input to if formatted correctly
+		{ inZip.zip = tempIn; }
+
 	return input;
 }
 

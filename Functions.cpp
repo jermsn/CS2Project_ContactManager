@@ -376,7 +376,7 @@ void displayContact(Contact c1)
 	cout << endl << endl;
 	string fullName;
 	fullName = string(c1.getFirstName()) + " " + string(c1.getLastName());
-	cout << "Name: " << setw(40) << left << fullName << "Address: " << c1.getAddrLine1() << endl;
+	cout << "Name: " << setw(40) << left << fullName << "Address: " << setw(25) << left << "H: " << c1.getAddrLine1() << c1.getHomePhone() << endl;
 	cout << "Birth Date: " 	<< setw(40) << left << c1.getBirthDate() << "   " << c1.getAddrLine2() << endl;
 	if (rContactPtr != 0)
 		{ cout << "Relationship: " << rContactPtr->getRelationship() << endl; }
@@ -387,43 +387,5 @@ void displayContact(Contact c1)
 	else // no specialized contact information.
 		{ cout <<setw(55) << left << " " << c1.getCity() << ", " << c1.getState() << " " << c1.getZip() << endl; }
 	cout << endl;
-
-
-//	cout << setw(33) << left << "First Name" <<
-//			setw(33) << "Last Name" <<
-//			setw(13) << "Birth Date" <<
-//			setw(17) << "Home Phone" <<
-//			setw(17) << "Mobile Phone" <<
-//			setw(17) << "Work Phone" <<
-//			setw(30) << "Address Line 1" <<
-//			setw(30) << "Address Line 2" <<
-//			setw(20) << "City" <<
-//			setw(5)  << "State" <<
-//			setw(7)  << "ZIP" << endl;
-//
-//	cout << setw(33) << left << "==========" <<
-//			setw(33) << "===========" <<
-//			setw(13) << "==========" <<
-//			setw(17) << "==========" <<
-//			setw(17) << "============" <<
-//			setw(17) << "==========" <<
-//			setw(30) << "==========" <<
-//			setw(30) << "==========" <<
-//			setw(20) << "==========" <<
-//			setw(5)  << "====" <<
-//			setw(7)  << "=====" <<	endl;
-//
-//	cout << setw(33) << left << c1.getFirstName() <<
-//			setw(33) << c1.getLastName() <<
-//			setw(13) << c1.getBirthDate() <<
-//			setw(17) << c1.getHomePhone() <<
-//			setw(17) << c1.getMobilePhone() <<
-//			setw(17) << c1.getWorkPhone() <<
-//			setw(30) << c1.getAddrLine1() <<
-//			setw(30) << c1.getAddrLine2() <<
-//			setw(20) << c1.getCity() <<
-//			setw(5)  << c1.getState() <<
-//			setw(7)  << c1.getZip() << endl << endl;
-
 
 } // displayContact
