@@ -22,7 +22,6 @@ int main() {
 	cout << "========================================" << endl;
 
 	do {
-
 			contactMenu();
 			cout << "Please enter a menu choice: ";
 			cin >> menuChoice;
@@ -70,17 +69,13 @@ int main() {
 				case('5'): {
 					cout << endl << "Program is ending - Have a nice day!" << endl;
 					break;
-				}//case 7
+				}//case 5
 				default:  {
 					cout << "========================================" << endl << endl;
 					cout << "Invalid choice. Valid menu options are 1-5. " << endl << endl;
 				}
 			}//switch menuChoice
-
 		} while ( menuChoice != '5' ); //while
 
-		return 0;
-
-	cout << "Program Ending. Have a nice day." << endl; // prints Program Ending. Have a nice day.
 	return 0;
 }

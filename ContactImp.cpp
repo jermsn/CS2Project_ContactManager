@@ -141,10 +141,15 @@ const string Contact::getState() const
 const string Contact::getZip() const
 {
 	string tmpStr;
-	if (zip.zip != "999")
-		tmpStr = zip.zip;
-	else
-		tmpStr = "<Unknown>";
+	tmpStr = zip.zip;
+	cout << zip.zip;
+//	if (zip.zip != "999")
+//	{
+//		tmpStr = zip.zip;
+//
+//	}
+//	else
+//		tmpStr = "<Unknown>";
 
 	return tmpStr;
 }
@@ -162,6 +167,14 @@ const string Contact::getEmail() const
 		tmpStr = "<Unknown>";
 
 	return tmpStr;
+}
+
+//****************************************************************
+//	Accessor for Contact Type
+//****************************************************************
+int Contact::getTypeOfContactInt() const
+{
+	return typeOfContact;
 }
 
 //****************************************************************

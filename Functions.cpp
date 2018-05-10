@@ -244,7 +244,7 @@ void contactEditMenu(Contact& c1)
 	char menuChoice;
 	do {
 		cout << endl;
-		cout << "1. Enter Contact Birth Date" << endl;
+		cout << "1. Enter Important Contact Date(s)" << endl;
 		cout << "2. Enter Contact Phone(s)" << endl;
 		cout << "3. Enter Contact Address" << endl;
 		cout << "4. Enter Contact Email" << endl;
@@ -271,7 +271,7 @@ void contactEditMenu(Contact& c1)
 				break;
 			}//case 4
 			case('5'): {
-				cout << endl << "Program is ending - Have a nice day!" << endl;
+				cout << endl << "Returning to main menu." << endl << endl;
 				break;
 			}//case 5
 			default:  {
@@ -365,18 +365,28 @@ Contact contactEntry()
 //*******************************************************
 void displayContact(Contact c1)
 {
-//	int * contactType;
-//	contactType = new int;
-//	// downcast pointer for Relative
-//	RelativeContact *rContactPtr = dynamic_cast < RelativeContact * > (&c1);
-//	if (rContactPtr != 0)
-//		{ contactType = 3; }
 
-	cout << endl;
+	// downcast pointer for Relative
+	RelativeContact *rContactPtr = dynamic_cast < RelativeContact * > (&c1);
+	// downcast pointer for Work contact
+	WorkContact *wContactPtr = dynamic_cast < WorkContact * > (&c1);
+	// downcast pointer for Client Contact
+	ClientContact *cContactPtr = dynamic_cast < ClientContact * > (&c1);
+
+	cout << endl << endl;
 	string fullName;
 	fullName = string(c1.getFirstName()) + " " + string(c1.getLastName());
-	cout << "Name: " << setw(60) << left << fullName << endl;
-	cout << "Birth Date: " << c1.getBirthDate() << endl;
+	cout << "Name: " << setw(40) << left << fullName << "Address: " << c1.getAddrLine1() << endl;
+	cout << "Birth Date: " 	<< setw(40) << left << c1.getBirthDate() << "   " << c1.getAddrLine2() << endl;
+	if (rContactPtr != 0)
+		{ cout << "Relationship: " << rContactPtr->getRelationship() << endl; }
+	if (wContactPtr != 0)
+		{ cout << "Employer: " << wContactPtr->getCompany() << endl; }
+	if (cContactPtr != 0)
+		{ cout << "Client Since: " << cContactPtr->getClientSinceDate() << endl; }
+	else // no specialized contact information.
+		{ cout <<setw(55) << left << " " << c1.getCity() << ", " << c1.getState() << " " << c1.getZip() << endl; }
+	cout << endl;
 
 
 //	cout << setw(33) << left << "First Name" <<
