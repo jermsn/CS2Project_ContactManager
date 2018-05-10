@@ -13,13 +13,8 @@ class PersonalContact : public Contact{
 public:
 	PersonalContact()
 	{ this->setTypeOfContact(1);}
-<<<<<<< HEAD
 	// Destructor
-	~PersonalContact();
-=======
-=======
-	{typeOfContact = 1;}
->>>>>>> fc4444ce10276da7b4f91247975b684753ad26a2
+	~PersonalContact() {};
 	int getTypeOfContact() const;
 };
 

@@ -24,7 +24,7 @@ Contact::Contact()
 //****************************************************************
 //	Destructor for base class
 //****************************************************************
-Contact::~Contact() { }
+//Contact::~Contact() {}
 
 
 
@@ -324,6 +324,15 @@ void Contact::setZip(Zipcode inZip)
 void Contact::setEmail(Email inEmail)
 {
 	email = inEmail;
+}
+
+
+//****************************************************************
+//	Mutator for Contact Type
+//****************************************************************
+void Contact::setTypeOfContact(int inType)
+{
+	typeOfContact = inType;
 }
 
 

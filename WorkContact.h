@@ -14,7 +14,7 @@ public:
 	WorkContact()
 	{this->setTypeOfContact(2);}
 	// Destructor
-	~WorkContact();
+	~WorkContact() {};
 	int getTypeOfContact() const;
 	void setCompany(string);
 	string getCompany() const;
