@@ -30,7 +30,7 @@ int main() {
 
 			switch(toupper(menuChoice)) {
 				case ('1'): {
-					cont1=contactEntry();
+					//cont1=contactEntry();
 					break;
 				}//case 1
 				case('2'): {

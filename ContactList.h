@@ -16,12 +16,16 @@ private:
 	};
 
 	listNode *head;
+	int count;
 public:
 	ContactList();
 	~ContactList();
 	Contact *searchForContact(string, string);
 	void deleteContact(string, string);
 	void editContact(string, string);
+	void bubbleSort();
+	void insert();
+	bool empty();
 };
 
 #endif

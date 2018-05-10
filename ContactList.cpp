@@ -20,6 +20,8 @@ ContactList::ContactList(){
 		currentNode->nextContact = newNode;
 		currentNode = currentNode->nextContact;
 	}
+
+	count = 0; //initialize the counter to keep track of the number of contacts
 }
 
 //*******************************************************
@@ -41,8 +43,7 @@ ContactList::~ContactList(){
 //*******************************************************
 Contact *ContactList::searchForContact(string firstN, string lastN){
 	Contact *tempCont;
-	auto currentNode = new listNode;
-	currentNode = head;
+	auto currentNode = head;
 
 	while(currentNode){
 		if(currentNode->currentContact->getFirstName() == firstN) {
@@ -69,4 +70,15 @@ void ContactList::deleteContact(string firstN, string lastN){
 void ContactList::editContact(string firstN, string lastN){
 	Contact *cont1 = searchForContact(firstN, lastN);
 	contactEditMenu(reinterpret_cast< Contact& >(cont1));
+}
+
+void ContactList::bubbleSort(){
+	Contact *tempCont1;
+	Contact *tempCont2;
+	auto currentNode = new listNode;
+	currentNode = head;
+
+	while(head){
+
+	}
 }

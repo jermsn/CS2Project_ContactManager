@@ -4,7 +4,3 @@
 #include "PersonalContact.h"
 
 using namespace std;
-
-int PersonalContact::getTypeOfContact() const {
-	return typeOfContact;
-}
