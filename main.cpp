@@ -15,7 +15,7 @@ using namespace std;
 int main() {
 	char menuChoice;
 	string firstName, lastName;
-	Contact cont1;
+	Contact* cont1;
 	ContactList list;
 
 	cout << "Welcome to the Contact Management System" << endl;
@@ -29,7 +29,7 @@ int main() {
 
 			switch(toupper(menuChoice)) {
 				case ('1'): {
-					cont1=contactEntry();
+					cont1 = contactEntry();
 					break;
 				}//case 1
 				case('2'): {

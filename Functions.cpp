@@ -286,7 +286,7 @@ void contactEditMenu(Contact& c1)
 //*******************************************************
 // Contact Entry
 //*******************************************************
-Contact contactEntry()
+Contact* contactEntry()
 {
 	Contact *c1;
 
@@ -356,36 +356,63 @@ Contact contactEntry()
 	// Prompt for additional information
 	contactEditMenu(*c1);
 
-	return *c1;
+	return c1;
 } // contactEntry
 
 
 //*******************************************************
 // Display output
 //*******************************************************
-void displayContact(Contact c1)
+void displayContact(Contact * c1)
 {
 
 	// downcast pointer for Relative
-	RelativeContact *rContactPtr = dynamic_cast < RelativeContact * > (&c1);
+	RelativeContact *rContactPtr = dynamic_cast < RelativeContact * > (c1);
 	// downcast pointer for Work contact
-	WorkContact *wContactPtr = dynamic_cast < WorkContact * > (&c1);
+	WorkContact *wContactPtr = dynamic_cast < WorkContact * > (c1);
 	// downcast pointer for Client Contact
-	ClientContact *cContactPtr = dynamic_cast < ClientContact * > (&c1);
+	ClientContact *cContactPtr = dynamic_cast < ClientContact * > (c1);
+	// downcast pointer for Personal Contact
+	PersonalContact *pContactPtr = dynamic_cast < PersonalContact * > (c1);
 
 	cout << endl << endl;
 	string fullName;
-	fullName = string(c1.getFirstName()) + " " + string(c1.getLastName());
-	cout << "Name: " << setw(40) << left << fullName << "Address: " << setw(25) << left << "H: " << c1.getAddrLine1() << c1.getHomePhone() << endl;
-	cout << "Birth Date: " 	<< setw(40) << left << c1.getBirthDate() << "   " << c1.getAddrLine2() << endl;
-	if (rContactPtr != 0)
-		{ cout << "Relationship: " << rContactPtr->getRelationship() << endl; }
-	if (wContactPtr != 0)
-		{ cout << "Employer: " << wContactPtr->getCompany() << endl; }
-	if (cContactPtr != 0)
-		{ cout << "Client Since: " << cContactPtr->getClientSinceDate() << endl; }
-	else // no specialized contact information.
-		{ cout <<setw(55) << left << " " << c1.getCity() << ", " << c1.getState() << " " << c1.getZip() << endl; }
+	fullName = string(c1->getFirstName()) + " " + string(c1->getLastName());
+	// Row 1
+	cout 	<< setw(14) << left << "Name: "
+			<< setw(40) << left << fullName
+			<< setw(9)  << left << "Address: "
+			<< setw(25) << left << c1->getAddrLine1()
+			<< setw(2)  << left << "H: " << c1->getHomePhone() << endl;
+
+	// Row 2
+	cout 	<< setw(14) << left << "Birth Date: "
+			<< setw(40) << left << c1->getBirthDate()
+			<< setw(9)  << left << " "
+			<< setw(25) << left << c1->getAddrLine2()
+			<< setw(2)  << left << "M: " << c1->getMobilePhone() << endl;
+
+	// Row 3
+	if (rContactPtr != 0) // relative contact
+		{ cout 	<< setw(14) << left << "Relationship: "
+				<< setw(40) << left << rContactPtr->getRelationship()
+				<< setw(9)  << left << " "
+				<< left << c1->getCity() << ", " << c1->getState() << " " << c1->getZip() << endl; }
+	if (wContactPtr != 0) // work contact
+		{ cout 	<< setw(14) << left << "Employer: "
+				<< setw(40) << left << wContactPtr->getCompany()
+				<< setw(9)  << left << " "
+				<< left << c1->getCity() << ", " << c1->getState() << " " << c1->getZip() << endl; }
+	if (cContactPtr != 0) // client contact
+		{ cout 	<< setw(14) << left << "Client Since: "
+				<< setw(40) << left << cContactPtr->getClientSinceDate()
+				<< setw(9)  << left << " "
+				<< left << c1->getCity() << ", " << c1->getState() << " " << c1->getZip() << endl; }
+	if (pContactPtr != 0) // no specialized contact information (e.g. personal contact)
+		{ cout 	<< setw(14) << left << " "
+				<< setw(40) << left << " "
+				<< setw(9)  << left << " "
+				<< left << c1->getCity() << ", " << c1->getState() << " " << c1->getZip() << endl; }
 	cout << endl;
 
 } // displayContact
