@@ -522,4 +522,5 @@ void Contact::resetContact(){
 	this->addrLine1 = "999";
 	this->addrLine2 = "999";
 	this->city = "999";
+	this->email.emailAddress = "999@999.999";
 }

@@ -389,12 +389,15 @@ void displayContact(Contact * c1)
 	cout 	<< setw(14) << left << "Birth Date: "
 			<< setw(40) << left << c1->getBirthDate()
 			<< setw(9)  << left << " "
-			<< setw(25) << left << c1->getAddrLine2()
+			<< setw(25) << left << ((c1->getAddrLine2() != "<Unknown>") ? c1->getAddrLine2() : " ")
 			<< setw(2)  << left << "M: " << c1->getMobilePhone() << endl;
 
 	// Row 3
 	string fullCity;
-	fullCity = string(c1->getCity()) + ", " + string(c1->getState()) + " " + string(c1->getZip());
+	if(c1->getCity() == "<Unknown>") // don't print city or comma if unknown
+		fullCity = string(c1->getState()) + " " + string(c1->getZip());
+	else							// print full city state zip
+		fullCity = string(c1->getCity()) + ", " + string(c1->getState()) + " " + string(c1->getZip());
 	if (rContactPtr != 0) // relative contact
 		{ cout 	<< setw(14) << left << "Relationship: "
 				<< setw(40) << left << rContactPtr->getRelationship()
@@ -419,6 +422,9 @@ void displayContact(Contact * c1)
 				<< setw(9)  << left << " "
 				<< setw(25) << left << fullCity
 				<< setw(2)  << left << "W: " << pContactPtr->getWorkPhone() << endl; }
-	cout << endl;
+
+	// Row 4
+	cout 	<< setw(14) << left << "Email: "
+			<< setw(40) << left << c1->getEmail() << endl << endl;
 
 } // displayContact
