@@ -15,7 +15,7 @@ using namespace std;
 int main() {
 	char menuChoice;
 	string firstName, lastName;
-	Contact* cont1;
+	Contact* cont1 = nullptr;
 	ContactList list;
 
 	cout << "Welcome to the Contact Management System" << endl;
@@ -33,7 +33,10 @@ int main() {
 					break;
 				}//case 1
 				case('2'): {
-					displayContact(cont1);
+					if (cont1 == nullptr)
+						{ cout << "No contact created yet." << endl; }
+					else
+						displayContact(cont1);
 					break;
 				}//case 2
 				case('3'):{

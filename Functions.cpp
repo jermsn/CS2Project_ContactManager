@@ -393,26 +393,32 @@ void displayContact(Contact * c1)
 			<< setw(2)  << left << "M: " << c1->getMobilePhone() << endl;
 
 	// Row 3
+	string fullCity;
+	fullCity = string(c1->getCity()) + ", " + string(c1->getState()) + " " + string(c1->getZip());
 	if (rContactPtr != 0) // relative contact
 		{ cout 	<< setw(14) << left << "Relationship: "
 				<< setw(40) << left << rContactPtr->getRelationship()
 				<< setw(9)  << left << " "
-				<< left << c1->getCity() << ", " << c1->getState() << " " << c1->getZip() << endl; }
+				<< setw(25) << left << fullCity
+				<< setw(2)  << left << "W: " << rContactPtr->getWorkPhone() << endl; }
 	if (wContactPtr != 0) // work contact
 		{ cout 	<< setw(14) << left << "Employer: "
 				<< setw(40) << left << wContactPtr->getCompany()
 				<< setw(9)  << left << " "
-				<< left << c1->getCity() << ", " << c1->getState() << " " << c1->getZip() << endl; }
+				<< setw(25) << left << fullCity
+				<< setw(2)  << left << "W: " << wContactPtr->getWorkPhone() << endl; }
 	if (cContactPtr != 0) // client contact
 		{ cout 	<< setw(14) << left << "Client Since: "
 				<< setw(40) << left << cContactPtr->getClientSinceDate()
 				<< setw(9)  << left << " "
-				<< left << c1->getCity() << ", " << c1->getState() << " " << c1->getZip() << endl; }
+				<< setw(25) << left << fullCity
+				<< setw(2)  << left << "W: " << cContactPtr->getWorkPhone() << endl; }
 	if (pContactPtr != 0) // no specialized contact information (e.g. personal contact)
 		{ cout 	<< setw(14) << left << " "
 				<< setw(40) << left << " "
 				<< setw(9)  << left << " "
-				<< left << c1->getCity() << ", " << c1->getState() << " " << c1->getZip() << endl; }
+				<< setw(25) << left << fullCity
+				<< setw(2)  << left << "W: " << pContactPtr->getWorkPhone() << endl; }
 	cout << endl;
 
 } // displayContact
