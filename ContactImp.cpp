@@ -24,7 +24,7 @@ Contact::Contact()
 //****************************************************************
 //	Destructor for base class
 //****************************************************************
-Contact::~Contact() { }
+//Contact::~Contact() {}
 
 
 
@@ -328,6 +328,15 @@ void Contact::setEmail(Email inEmail)
 
 
 //****************************************************************
+//	Mutator for Contact Type
+//****************************************************************
+void Contact::setTypeOfContact(int inType)
+{
+	typeOfContact = inType;
+}
+
+
+//****************************************************************
 //	Stream output for State
 //****************************************************************
 ostream &operator << (ostream & output, const Contact::State &st)
@@ -501,4 +510,28 @@ void Contact::resetContact(){
 	this->addrLine1 = "999";
 	this->addrLine2 = "999";
 	this->city = "999";
+}
+
+bool Contact::operator<(Contact *right) const {
+	auto left = this;
+
+	if(left->getTypeOfContactInt() < right->getTypeOfContactInt())
+		return true;
+	else if(left->getTypeOfContactInt() < right->getTypeOfContactInt())
+		return false;
+	else{
+		if(left->getLastName() < right->getLastName())
+			return true;
+		else if(left->getLastName() > right->getLastName())
+			return false;
+		else{
+			if(left->getFirstName() < right->getFirstName())
+				return true;
+			else if(left->getFirstName() == right->getFirstName())
+				return true;
+			else{
+				return (left->getBirthDate() <= right->getBirthDate());
+			}
+		}
+	}
 }

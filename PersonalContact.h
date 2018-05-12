@@ -14,7 +14,6 @@ public:
 	PersonalContact()
 	{ this->setTypeOfContact(1);}
 	~PersonalContact();
-	int getTypeOfContact() const;
 };
 
 #endif //GROUP_PROJECT_PERSONALCONTACT_H

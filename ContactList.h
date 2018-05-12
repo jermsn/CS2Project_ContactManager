@@ -23,8 +23,9 @@ public:
 	Contact *searchForContact(string, string);
 	void deleteContact(string, string);
 	void editContact(string, string);
-	void bubbleSort();
-	void insert();
+	void addContact(Contact *);
+	void insert(Contact *);
+	void printList();
 	bool empty();
 };
 

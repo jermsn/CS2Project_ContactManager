@@ -31,7 +31,7 @@ ContactList::~ContactList(){
 	while(head){
 		auto currentNode = head; //temp ptr to traverse the list
 
-		while(!currentNode->nextContact){ //find the end
+		while(currentNode->nextContact){ //find the end
 			currentNode = currentNode->nextContact;
 		}
 		delete currentNode; // delete the last node of the list
@@ -45,13 +45,14 @@ Contact *ContactList::searchForContact(string firstN, string lastN){
 	Contact *tempCont;
 	auto currentNode = head;
 
-	while(currentNode){
+	while(currentNode->nextContact){
 		if(currentNode->currentContact->getFirstName() == firstN) {
 			if (currentNode->currentContact->getLastName() == lastN){
 				tempCont = currentNode->currentContact;
 				return tempCont;
 			}
 		}
+		currentNode = currentNode->nextContact;
 	}
 }
 
@@ -72,13 +73,60 @@ void ContactList::editContact(string firstN, string lastN){
 	contactEditMenu(reinterpret_cast< Contact& >(cont1));
 }
 
-void ContactList::bubbleSort(){
-	Contact *tempCont1;
-	Contact *tempCont2;
-	auto currentNode = new listNode;
-	currentNode = head;
+//*******************************************************
+// insert
+//*******************************************************
+void ContactList::insert(Contact *c1){
+	if(count < 100)
+		addContact(c1);
+	else
+		cout << "Your contact manager is full. Contact could not be added";
+}
 
-	while(head){
+//*******************************************************
+// addContact
+//*******************************************************
+void ContactList::addContact(Contact *c1){
+	auto newNode = new listNode;
+	newNode->currentContact = c1;
 
+	if(!head)
+		head = newNode;
+	else {
+		auto currentNode = head;
+
+		while(currentNode){
+			if(newNode->currentContact < currentNode->currentContact) {
+				listNode* temp1, * temp2;
+				temp1 = currentNode;
+				temp2 = currentNode->nextContact;
+
+				currentNode = newNode;
+				currentNode->nextContact = temp1;
+				currentNode->nextContact->nextContact = temp2;
+			}
+			else
+				currentNode = currentNode->nextContact;
+		}
+	}
+	count++;
+}
+
+//*******************************************************
+// emptu
+//*******************************************************
+bool ContactList::empty(){
+	return !head->currentContact!=nullptr || false;
+}
+
+//*******************************************************
+// printList
+//*******************************************************
+void ContactList::printList(){
+	auto currentNode = head;
+
+	while(currentNode){
+		displayContact(currentNode->currentContact);
+		currentNode = currentNode->nextContact;
 	}
 }

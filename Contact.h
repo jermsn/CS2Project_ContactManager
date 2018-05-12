@@ -25,8 +25,8 @@ public:
 	{	string emailAddress;	};
 	// Constructor
 	Contact();
-	//Destructor
-	~Contact();
+	// Destructor
+	virtual ~Contact() {};
 	// Accessors
 	const char * getFirstName() const;	// Return first name of contact
 	const char * getLastName() const; 	// Return last name of contact
@@ -69,6 +69,8 @@ public:
 	friend istream &operator >> (istream &, Zipcode &);
 	friend ostream &operator << (ostream &, const Email &);
 	friend istream &operator >> (istream &, Email &);
+	//comparator
+	bool operator<(Contact *) const;
 private:
 	char firstName[30];		// First name
 	char lastName[30];		// Last name
@@ -82,7 +84,6 @@ private:
 	State state;			// State of mailing address
 	Zipcode zip;			// Zip code of mailing address
 	Email email;			// Email of the contact
-
 	int typeOfContact;		// Discern type of contact
 };
 
