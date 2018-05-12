@@ -12,8 +12,8 @@
 
 void clearCIN(void);
 void contactMenu(void);
-Contact contactEntry();
-void displayContact(Contact);
+Contact* contactEntry();
+void displayContact(Contact*);
 void addBirthDate(Contact&);
 void addAddress(Contact&);
 void addContactPhones(Contact&);

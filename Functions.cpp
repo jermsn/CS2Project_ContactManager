@@ -244,7 +244,7 @@ void contactEditMenu(Contact& c1)
 	char menuChoice;
 	do {
 		cout << endl;
-		cout << "1. Enter Contact Birth Date" << endl;
+		cout << "1. Enter Important Contact Date(s)" << endl;
 		cout << "2. Enter Contact Phone(s)" << endl;
 		cout << "3. Enter Contact Address" << endl;
 		cout << "4. Enter Contact Email" << endl;
@@ -271,7 +271,7 @@ void contactEditMenu(Contact& c1)
 				break;
 			}//case 4
 			case('5'): {
-				cout << endl << "Program is ending - Have a nice day!" << endl;
+				cout << endl << "Returning to main menu." << endl << endl;
 				break;
 			}//case 5
 			default:  {
@@ -286,7 +286,7 @@ void contactEditMenu(Contact& c1)
 //*******************************************************
 // Contact Entry
 //*******************************************************
-Contact contactEntry()
+Contact* contactEntry()
 {
 	Contact *c1;
 
@@ -355,63 +355,74 @@ Contact contactEntry()
 	// Prompt for additional information
 	contactEditMenu(*c1);
 
-	return *c1;
+	return c1;
 } // contactEntry
 
 //*******************************************************
 // Display output
 //*******************************************************
-void displayContact(Contact c1)
+void displayContact(Contact * c1)
 {
-//	int * contactType;
-//	contactType = new int;
-//	// downcast pointer for Relative
-//	RelativeContact *rContactPtr = dynamic_cast < RelativeContact * > (&c1);
-//	if (rContactPtr != 0)
-//		{ contactType = 3; }
 
-	cout << endl;
+	// downcast pointer for Relative
+	RelativeContact *rContactPtr = dynamic_cast < RelativeContact * > (c1);
+	// downcast pointer for Work contact
+	WorkContact *wContactPtr = dynamic_cast < WorkContact * > (c1);
+	// downcast pointer for Client Contact
+	ClientContact *cContactPtr = dynamic_cast < ClientContact * > (c1);
+	// downcast pointer for Personal Contact
+	PersonalContact *pContactPtr = dynamic_cast < PersonalContact * > (c1);
+
+	cout << endl << endl;
 	string fullName;
-	fullName = string(c1.getFirstName()) + " " + string(c1.getLastName());
-	cout << "Name: " << setw(60) << left << fullName << endl;
-	cout << "Birth Date: " << c1.getBirthDate() << endl;
+	fullName = string(c1->getFirstName()) + " " + string(c1->getLastName());
+	// Row 1
+	cout 	<< setw(14) << left << "Name: "
+			<< setw(40) << left << fullName
+			<< setw(9)  << left << "Address: "
+			<< setw(25) << left << c1->getAddrLine1()
+			<< setw(2)  << left << "H: " << c1->getHomePhone() << endl;
 
+	// Row 2
+	cout 	<< setw(14) << left << "Birth Date: "
+			<< setw(40) << left << c1->getBirthDate()
+			<< setw(9)  << left << " "
+			<< setw(25) << left << ((c1->getAddrLine2() != "<Unknown>") ? c1->getAddrLine2() : " ")
+			<< setw(2)  << left << "M: " << c1->getMobilePhone() << endl;
 
-//	cout << setw(33) << left << "First Name" <<
-//			setw(33) << "Last Name" <<
-//			setw(13) << "Birth Date" <<
-//			setw(17) << "Home Phone" <<
-//			setw(17) << "Mobile Phone" <<
-//			setw(17) << "Work Phone" <<
-//			setw(30) << "Address Line 1" <<
-//			setw(30) << "Address Line 2" <<
-//			setw(20) << "City" <<
-//			setw(5)  << "State" <<
-//			setw(7)  << "ZIP" << endl;
-//
-//	cout << setw(33) << left << "==========" <<
-//			setw(33) << "===========" <<
-//			setw(13) << "==========" <<
-//			setw(17) << "==========" <<
-//			setw(17) << "============" <<
-//			setw(17) << "==========" <<
-//			setw(30) << "==========" <<
-//			setw(30) << "==========" <<
-//			setw(20) << "==========" <<
-//			setw(5)  << "====" <<
-//			setw(7)  << "=====" <<	endl;
-//
-//	cout << setw(33) << left << c1.getFirstName() <<
-//			setw(33) << c1.getLastName() <<
-//			setw(13) << c1.getBirthDate() <<
-//			setw(17) << c1.getHomePhone() <<
-//			setw(17) << c1.getMobilePhone() <<
-//			setw(17) << c1.getWorkPhone() <<
-//			setw(30) << c1.getAddrLine1() <<
-//			setw(30) << c1.getAddrLine2() <<
-//			setw(20) << c1.getCity() <<
-//			setw(5)  << c1.getState() <<
-//			setw(7)  << c1.getZip() << endl << endl;
+	// Row 3
+	string fullCity;
+	if(c1->getCity() == "<Unknown>") // don't print city or comma if unknown
+		fullCity = string(c1->getState()) + " " + string(c1->getZip());
+	else							// print full city state zip
+		fullCity = string(c1->getCity()) + ", " + string(c1->getState()) + " " + string(c1->getZip());
+	if (rContactPtr != 0) // relative contact
+		{ cout 	<< setw(14) << left << "Relationship: "
+				<< setw(40) << left << rContactPtr->getRelationship()
+				<< setw(9)  << left << " "
+				<< setw(25) << left << fullCity
+				<< setw(2)  << left << "W: " << rContactPtr->getWorkPhone() << endl; }
+	if (wContactPtr != 0) // work contact
+		{ cout 	<< setw(14) << left << "Employer: "
+				<< setw(40) << left << wContactPtr->getCompany()
+				<< setw(9)  << left << " "
+				<< setw(25) << left << fullCity
+				<< setw(2)  << left << "W: " << wContactPtr->getWorkPhone() << endl; }
+	if (cContactPtr != 0) // client contact
+		{ cout 	<< setw(14) << left << "Client Since: "
+				<< setw(40) << left << cContactPtr->getClientSinceDate()
+				<< setw(9)  << left << " "
+				<< setw(25) << left << fullCity
+				<< setw(2)  << left << "W: " << cContactPtr->getWorkPhone() << endl; }
+	if (pContactPtr != 0) // no specialized contact information (e.g. personal contact)
+		{ cout 	<< setw(14) << left << " "
+				<< setw(40) << left << " "
+				<< setw(9)  << left << " "
+				<< setw(25) << left << fullCity
+				<< setw(2)  << left << "W: " << pContactPtr->getWorkPhone() << endl; }
 
+	// Row 4
+	cout 	<< setw(14) << left << "Email: "
+			<< setw(40) << left << c1->getEmail() << endl << endl;
 
 } // displayContact

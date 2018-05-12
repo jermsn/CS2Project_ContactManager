@@ -165,6 +165,14 @@ const string Contact::getEmail() const
 }
 
 //****************************************************************
+//	Accessor for Contact Type
+//****************************************************************
+int Contact::getTypeOfContactInt() const
+{
+	return typeOfContact;
+}
+
+//****************************************************************
 //	Mutator for First Name
 //	Makes first character upper, and all other characters
 //	lower case
@@ -453,6 +461,10 @@ istream &operator>>( istream &input, Contact::Zipcode &inZip)
 			}
 		}
 	}
+
+	if (!cin.fail())								// Assign input to if formatted correctly
+		{ inZip.zip = tempIn; }
+
 	return input;
 }
 
@@ -510,6 +522,7 @@ void Contact::resetContact(){
 	this->addrLine1 = "999";
 	this->addrLine2 = "999";
 	this->city = "999";
+	this->email.emailAddress = "999@999.999";
 }
 
 bool Contact::operator<(Contact *right) const {

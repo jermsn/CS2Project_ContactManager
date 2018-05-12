@@ -15,14 +15,13 @@ using namespace std;
 int main() {
 	char menuChoice;
 	string firstName, lastName;
-	Contact *cont1;
+	Contact* cont1 = nullptr;
 	ContactList list;
 
 	cout << "Welcome to the Contact Management System" << endl;
 	cout << "========================================" << endl;
 
 	do {
-
 			contactMenu();
 			cout << "Please enter a menu choice: ";
 			cin >> menuChoice;
@@ -30,12 +29,15 @@ int main() {
 
 			switch(toupper(menuChoice)) {
 				case ('1'): {
-					//cont1=contactEntry();
+					cont1 = contactEntry();
 					list.insert(cont1);
 					break;
 				}//case 1
 				case('2'): {
-					displayContact(cont1);
+					if (cont1 == nullptr)
+						{ cout << "No contact created yet." << endl; }
+					else
+						displayContact(cont1);
 					break;
 				}//case 2
 				case('3'):{
@@ -71,17 +73,13 @@ int main() {
 				case('5'): {
 					cout << endl << "Program is ending - Have a nice day!" << endl;
 					break;
-				}//case 7
+				}//case 5
 				default:  {
 					cout << "========================================" << endl << endl;
 					cout << "Invalid choice. Valid menu options are 1-5. " << endl << endl;
 				}
 			}//switch menuChoice
-
 		} while ( menuChoice != '5' ); //while
 
-		return 0;
-
-	cout << "Program Ending. Have a nice day." << endl; // prints Program Ending. Have a nice day.
 	return 0;
 }
