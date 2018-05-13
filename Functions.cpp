@@ -394,6 +394,8 @@ void displayContact(Contact * c1)
 	string fullCity;
 	if(c1->getCity() == "<Unknown>") // don't print city or comma if unknown
 		fullCity = string(c1->getState()) + " " + string(c1->getZip());
+	//else if (c1->getCity() == "<Unknown>" && c1->getState() == "")
+	//	fullCity = " ";
 	else							// print full city state zip
 		fullCity = string(c1->getCity()) + ", " + string(c1->getState()) + " " + string(c1->getZip());
 	if (rContactPtr != 0) // relative contact
