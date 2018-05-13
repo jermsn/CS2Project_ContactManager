@@ -116,7 +116,7 @@ void ContactList::addContact(Contact *c1){
 // emptu
 //*******************************************************
 bool ContactList::empty(){
-	return !head->currentContact!=nullptr || false;
+	return head->currentContact != nullptr ? true : false;
 }
 
 //*******************************************************

@@ -115,7 +115,7 @@ void addBirthDate(Contact& c1)
 	// downcast pointer for Client Contact
 	clearCIN();
 	Contact * ptr = &c1;
-	ClientContact *contactPtr = reinterpret_cast < ClientContact * > (ptr);
+	ClientContact *contactPtr = dynamic_cast < ClientContact * > (ptr);
 	if (contactPtr != 0)
 	{
 		Date clientDate;
@@ -332,7 +332,7 @@ Contact* contactEntry()
 	getline(cin, inputName);
 	c1->setLastName(inputName);
 
-	RelativeContact *rContactPtr = reinterpret_cast < RelativeContact * > (c1);
+	RelativeContact *rContactPtr = dynamic_cast < RelativeContact * > (c1);
 
 	if (rContactPtr != 0)
 	{
@@ -343,7 +343,7 @@ Contact* contactEntry()
 	}// end downcast client date entry
 
 	// downcast pointer for Work contact
-	WorkContact *wContactPtr = reinterpret_cast < WorkContact * > (c1);
+	WorkContact *wContactPtr = dynamic_cast < WorkContact * > (c1);
 	if (wContactPtr != 0)
 	{
 		string inputCompany;
