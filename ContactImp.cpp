@@ -22,13 +22,6 @@ Contact::Contact()
 }
 
 //****************************************************************
-//	Destructor for base class
-//****************************************************************
-//Contact::~Contact() {}
-
-
-
-//****************************************************************
 //	Accessor for First Name
 //****************************************************************
 const string Contact::getFirstName() const
@@ -181,7 +174,7 @@ void Contact::setFirstName(string inFN)
 {
 	firstName = inFN;
 
-	for (int i = 0; i < firstName.length(); i++)
+	for (unsigned int i = 0; i < firstName.length(); i++)
 		firstName[i] = tolower(firstName[i]);
 	firstName[0] = toupper(firstName[0]);
 }
@@ -195,7 +188,7 @@ void Contact::setLastName(string inLN)
 {
 	lastName = inLN;
 
-	for (int i = 0; i < lastName.length(); i++)
+	for (unsigned int i = 0; i < lastName.length(); i++)
 		lastName[i] = tolower(lastName[i]);
 	lastName[0] = toupper(lastName[0]);
 }
@@ -501,11 +494,15 @@ istream &operator>>( istream &input, Contact::Email &inEmail)
 	return input;
 }
 
+//****************************************************************
+//	Reset contact information
+//****************************************************************
 void Contact::resetContact(){
-	for(int f=0; f<30; f++)
-		this->firstName[f]=' ';
-	for(int l=0; l<30; l++)
-		this->lastName[l]=' ';
+
+//	for(int f=0; f<30; f++)
+//		this->firstName[f]=' ';
+//	for(int l=0; l<30; l++)
+//		this->lastName[l]=' ';
 	this->birthDate.setMonth(99, 99, 9999);
 	this->birthDate.setDay(99, 99, 9999);
 	this->birthDate.setYear(99, 99, 9999);
@@ -517,6 +514,9 @@ void Contact::resetContact(){
 	this->email.emailAddress = "999@999.999";
 }
 
+//****************************************************************
+//	Contact operator overload for <
+//****************************************************************
 bool Contact::operator<(Contact *right) const {
 	auto left = this;
 

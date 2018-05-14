@@ -11,9 +11,11 @@ using namespace std;
 
 class PersonalContact : public Contact{
 public:
+	// Constructor
 	PersonalContact()
-	{ this->setTypeOfContact(1);}
-	~PersonalContact() override;
+	{ this->setTypeOfContact(1); }
+	// Destructor
+	~PersonalContact() {};
 };
 
 #endif //GROUP_PROJECT_PERSONALCONTACT_H

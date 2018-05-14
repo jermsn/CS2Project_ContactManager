@@ -26,17 +26,36 @@ ContactList::ContactList(){
 
 //*******************************************************
 // Destructor for Contact List
+// 2018-05-14 Jnorvell edit - program was crashing because of this on exit
+// unable to find cause - just implemented list as shown on C++HtP p1147
 //*******************************************************
-ContactList::~ContactList(){
-	while(head){
-		auto currentNode = head; //temp ptr to traverse the list
+//ContactList::~ContactList(){
+//	while(head){
+//		auto currentNode = head; //temp ptr to traverse the list
+//
+//		while(currentNode->nextContact){ //find the end
+//			currentNode = currentNode->nextContact;
+//		}
+//		delete currentNode; // delete the last node of the list
+//
+//	}
+//}
 
-		while(currentNode->nextContact){ //find the end
-			currentNode = currentNode->nextContact;
-		}
-		delete currentNode; // delete the last node of the list
+ContactList::~ContactList()
+{
+	listNode *nodePtr;		// To traverse the list
+	listNode *nextNode;		// To point to the next node
+
+	nodePtr = head;			// Position nodePtr at the head of the list
+
+	while (nodePtr != nullptr)				// While nodePtr is not at the end of the list ...
+	{
+		nextNode = nodePtr->nextContact;	// Save a pointer to the next node
+		delete nodePtr;						// Delete the current node
+		nodePtr = nextNode;					// Position nodePtr at the next node
 	}
-}
+} // end destructor
+
 
 //*******************************************************
 // searchForContact
@@ -115,13 +134,13 @@ void ContactList::insert(Contact *c1){
 // addContact
 //*******************************************************
 void ContactList::addContact(Contact *c1){
-	auto newNode = new listNode;
-	newNode->currentContact = c1;
+	auto newNode = new listNode;	// To point to a new node
+	newNode->currentContact = c1;	// give the address of the new contact
 
-	if(!head->currentContact)
+	if(!head->currentContact)		// If there are no nodes make newNode the first
 		head = newNode;
 	else {
-		auto currentNode = head;
+		auto currentNode = head;	// To traverse the list
 
 		while(currentNode){
 			if(newNode->currentContact < currentNode->currentContact) {
@@ -140,11 +159,12 @@ void ContactList::addContact(Contact *c1){
 	count++;
 }
 
+
 //*******************************************************
-// emptu
+// empty
 //*******************************************************
 bool ContactList::empty(){
-	return (!head->currentContact ? true : false);
+	return ((head->currentContact == nullptr) ? true : false);
 }
 
 //*******************************************************
