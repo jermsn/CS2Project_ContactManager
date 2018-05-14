@@ -42,18 +42,34 @@ ContactList::~ContactList(){
 // searchForContact
 //*******************************************************
 Contact *ContactList::searchForContact(string firstN, string lastN){
-	Contact *tempCont;
+	Contact *tempCont = nullptr;
 	auto currentNode = head;
+	string contName;
 
-	while(currentNode->nextContact){
-		if(currentNode->currentContact->getFirstName() == firstN) {
-			if (currentNode->currentContact->getLastName() == lastN){
-				tempCont = currentNode->currentContact;
-				return tempCont;
-			}
+	if(this->empty())
+		return nullptr;
+	else if(!currentNode->nextContact)
+		contName = currentNode->currentContact->getFirstName();
+		if(compareNames(contName, firstN)){
+			contName = currentNode->currentContact->getLastName();
+		if (compareNames(contName, lastN)){
+			tempCont = currentNode->currentContact;
+			return tempCont;
 		}
-		currentNode = currentNode->nextContact;
 	}
+	else
+		while(currentNode->nextContact){
+			contName = currentNode->currentContact->getFirstName();
+			if(compareNames(contName, firstN)){
+				contName = currentNode->currentContact->getLastName();
+				if (compareNames(contName, lastN)){
+					tempCont = currentNode->currentContact;
+					return tempCont;
+				}
+			}
+			currentNode = currentNode->nextContact;
+		}
+	return tempCont;
 }
 
 
@@ -62,7 +78,14 @@ Contact *ContactList::searchForContact(string firstN, string lastN){
 //*******************************************************
 void ContactList::deleteContact(string firstN, string lastN){
 	Contact *cont1 = searchForContact(firstN, lastN);
-	cont1->resetContact();
+	if(!cont1){
+		cout << "Contact Could not be found" << endl;
+		contactMenu();
+	}
+	else{
+		cout << "Contact Deleted: " << firstN << ", " << lastN << endl;
+		cont1 = nullptr;
+	}
 }
 
 //*******************************************************
@@ -70,7 +93,12 @@ void ContactList::deleteContact(string firstN, string lastN){
 //*******************************************************
 void ContactList::editContact(string firstN, string lastN){
 	Contact *cont1 = searchForContact(firstN, lastN);
-	contactEditMenu(reinterpret_cast< Contact& >(cont1));
+	if(!cont1) {
+		cout << "Contact Could not be found" << endl;
+		contactMenu();
+	}
+	else
+		contactEditMenu(reinterpret_cast< Contact& >(cont1));
 }
 
 //*******************************************************
@@ -90,7 +118,7 @@ void ContactList::addContact(Contact *c1){
 	auto newNode = new listNode;
 	newNode->currentContact = c1;
 
-	if(!head)
+	if(!head->currentContact)
 		head = newNode;
 	else {
 		auto currentNode = head;
@@ -116,7 +144,7 @@ void ContactList::addContact(Contact *c1){
 // emptu
 //*******************************************************
 bool ContactList::empty(){
-	return !head->currentContact!=nullptr || false;
+	return (!head->currentContact ? true : false);
 }
 
 //*******************************************************

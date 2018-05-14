@@ -19,5 +19,6 @@ void addAddress(Contact&);
 void addContactPhones(Contact&);
 void addContactEmail(Contact&);
 void contactEditMenu(Contact&);
+bool compareNames(string, string);
 
 #endif /* FUNCTIONS_H_ */

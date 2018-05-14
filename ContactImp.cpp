@@ -6,7 +6,7 @@
  */
 
 #include <iostream>
-#include <string.h>
+#include <cstring>
 #include <sstream>
 #include "Contact.h"
 #include "Functions.h"
@@ -31,7 +31,7 @@ Contact::Contact()
 //****************************************************************
 //	Accessor for First Name
 //****************************************************************
-const char * Contact::getFirstName() const
+const string Contact::getFirstName() const
 {
 	return firstName;
 }
@@ -39,7 +39,7 @@ const char * Contact::getFirstName() const
 //****************************************************************
 //	Accessor for Last Name
 //****************************************************************
-const char * Contact::getLastName() const
+const string Contact::getLastName() const
 {
 	return lastName;
 }
@@ -179,16 +179,11 @@ int Contact::getTypeOfContactInt() const
 //****************************************************************
 void Contact::setFirstName(string inFN)
 {
-	char tmpName[30];
-	strcpy(tmpName,inFN.c_str());
+	firstName = inFN;
 
-	for (int i=0; i<30; i++)
-	{
-		if(i==0)
-			firstName[i] = toupper(tmpName[i]);
-		else
-			firstName[i] = tolower(tmpName[i]);
-	}
+	for (int i = 0; i < firstName.length(); i++)
+		firstName[i] = tolower(firstName[i]);
+	firstName[0] = toupper(firstName[0]);
 }
 
 //****************************************************************
@@ -198,16 +193,11 @@ void Contact::setFirstName(string inFN)
 //****************************************************************
 void Contact::setLastName(string inLN)
 {
-	char tmpName[30];
-	strcpy(tmpName,inLN.c_str());
+	lastName = inLN;
 
-	for (int i=0; i<30; i++)
-	{
-		if(i==0)
-			lastName[i] = toupper(tmpName[i]);
-		else
-			lastName[i] = tolower(tmpName[i]);
-	}
+	for (int i = 0; i < lastName.length(); i++)
+		lastName[i] = tolower(lastName[i]);
+	lastName[0] = toupper(lastName[0]);
 }
 
 //****************************************************************

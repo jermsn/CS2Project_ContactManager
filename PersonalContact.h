@@ -13,7 +13,7 @@ class PersonalContact : public Contact{
 public:
 	PersonalContact()
 	{ this->setTypeOfContact(1);}
-	~PersonalContact();
+	~PersonalContact() override;
 };
 
 #endif //GROUP_PROJECT_PERSONALCONTACT_H

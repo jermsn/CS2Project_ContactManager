@@ -426,3 +426,25 @@ void displayContact(Contact * c1)
 			<< setw(40) << left << c1->getEmail() << endl << endl;
 
 } // displayContact
+
+bool compareNames(string cN, string sN){
+	bool same = false;
+	size_t length = 0;
+	if(cN.length() < sN.length())
+		length = sN.length();
+	else
+		length = cN.length();
+
+	int i = 0;
+	while(i < length){
+		if(tolower(cN[i]) == tolower(sN[i]))
+			i++;
+		else
+			return same;
+	}
+
+	if(i == length)
+		same = true;
+
+	return same;
+}

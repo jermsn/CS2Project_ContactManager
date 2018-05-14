@@ -28,8 +28,8 @@ public:
 	// Destructor
 	virtual ~Contact() {};
 	// Accessors
-	const char * getFirstName() const;	// Return first name of contact
-	const char * getLastName() const; 	// Return last name of contact
+	const string getFirstName() const;	// Return first name of contact
+	const string getLastName() const; 	// Return last name of contact
 	const string getBirthDate() const;	// Return contact birth date
 	const string getHomePhone() const;	// Return home phone
 	const string getMobilePhone() const;// Return mobile phone
@@ -72,8 +72,8 @@ public:
 	//comparator
 	bool operator<(Contact *) const;
 private:
-	char firstName[30];		// First name
-	char lastName[30];		// Last name
+	string firstName;		// First name
+	string lastName;		// Last name
 	Date birthDate;			// Birth date, formatted mm/dd/yyyy
 	PhoneNumber homePhone;	// Home phone, formated (NNN) NNN-NNNN
 	PhoneNumber mobilePhone;// Mobile phone, formated (NNN) NNN-NNNN

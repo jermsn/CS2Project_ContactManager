@@ -15,7 +15,7 @@ using namespace std;
 int main() {
 	char menuChoice;
 	string firstName, lastName;
-	Contact* cont1 = nullptr;
+	Contact* cont1 = new Contact;
 	ContactList list;
 
 	cout << "Welcome to the Contact Management System" << endl;
@@ -45,13 +45,7 @@ int main() {
 					cin >> firstName;
 					cout << "Last: ";
 					cin >> lastName;
-
-
 					list.editContact(firstName, lastName);
-
-					//cont1 = searchforContact(firstName, lastName);
-					//editContact(cont1);
-
 					break;
 				}
 				case('4'): {
@@ -59,15 +53,7 @@ int main() {
 					cin >> firstName;
 					cout << "Last: ";
 					cin >> lastName;
-
 					list.deleteContact(firstName, lastName);
-
-					//cont1 = searchforContact(firstName, lastName);
-
-					list.deleteContact(firstName, lastName);		//cont1 = searchforContact(firstName, lastName);
-
-					//deleteContact(cont1);
-
 					break;
 				}
 				case('5'): {
