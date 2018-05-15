@@ -7,11 +7,13 @@
 
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 #include "Contact.h"
 #include "ClientContact.h"
 #include "PersonalContact.h"
 #include "RelativeContact.h"
 #include "WorkContact.h"
+#include "ContactList.h"
 
 //*******************************************************
 // Clear Cin
@@ -29,31 +31,33 @@ void contactMenu(void) {
 	cout << "2. Display Contact Information" << endl;
 	cout << "3. Edit Contact Information" << endl;
 	cout << "4. Delete Contact Information" << endl;
-	cout << "5. Exit the Program" << endl;
+	cout << "5. Save Contact Information to an External File" << endl;
+	cout << "6. Load Contact Information from an External File" << endl;
+	cout << "7. Exit the Program" << endl;
 }//contactMenu
 
 //*******************************************************
 // Address Entry
 //*******************************************************
-void addAddress(Contact& c1)
+void addAddress(Contact *c1)
 {
 	// Prompt for address line 1
-	if( c1.getAddrLine1() != "<Unknown>")
-		cout << c1.getFirstName() << " currently has " << c1.getAddrLine1() << " as the first line of their address." << endl;
+	if( c1->getAddrLine1() != "<Unknown>")
+		cout << c1->getFirstName() << " currently has " << c1->getAddrLine1() << " as the first line of their address." << endl;
 	cout << "Enter the first line of your contact's street address (or 999 if blank): ";
-	c1.setAddrLine1(cin);
+	c1->setAddrLine1(cin);
 
 	// Prompt for address line 2
-	if( c1.getAddrLine2() != "<Unknown>")
-		cout << c1.getFirstName() << " currently has " << c1.getAddrLine2() << " as the second line of their address." << endl;
+	if( c1->getAddrLine2() != "<Unknown>")
+		cout << c1->getFirstName() << " currently has " << c1->getAddrLine2() << " as the second line of their address." << endl;
 	cout << "Enter the second line of your contact's street address (or 999 if blank): ";
-	c1.setAddrLine2(cin);
+	c1->setAddrLine2(cin);
 
 	// Prompt for city
-	if( c1.getCity() != "<Unknown>")
-		cout << c1.getFirstName() << " currently has " << c1.getCity() << " as their city." << endl;
+	if( c1->getCity() != "<Unknown>")
+		cout << c1->getFirstName() << " currently has " << c1->getCity() << " as their city." << endl;
 	cout << "Enter your contact's city (or 999 if blank): ";
-	c1.setCity(cin);
+	c1->setCity(cin);
 
 	// Prompt for state
 	Contact::State inState;
@@ -68,7 +72,7 @@ void addAddress(Contact& c1)
 			cout << "Please enter your contact's State abbreviation: ";
 		cin >> inState; // store state
 	} while ( cin.fail() );
-	c1.setState(inState);
+	c1->setState(inState);
 
 	// Prompt for zip
 	clearCIN();
@@ -84,13 +88,13 @@ void addAddress(Contact& c1)
 			cout << "Please enter your contact's ZIP Code in the form of NNNNN-NNNN or NNNNN: ";
 		cin >> inZip; // store date
 	} while ( cin.fail() );
-	c1.setZip(inZip);
+	c1->setZip(inZip);
 }// addAddress
 
 //*******************************************************
 // Birth Date Entry
 //*******************************************************
-void addBirthDate(Contact& c1)
+void addBirthDate(Contact *c1)
 {
 	Date tmpDate;
 	do
@@ -103,18 +107,18 @@ void addBirthDate(Contact& c1)
 		}
 		else
 		{
-			if (c1.getBirthDate() != "<Unknown>")
-				cout << c1.getFirstName() << " currently has " << c1.getBirthDate() << " as their birth date." << endl;
+			if (c1->getBirthDate() != "<Unknown>")
+				cout << c1->getFirstName() << " currently has " << c1->getBirthDate() << " as their birth date." << endl;
 			cout << "Please enter your contact's birthdate in the form of MM/DD/YYYY: ";
 		}
 
 		cin >> tmpDate; // store date
 	} while ( cin.fail() );
-	c1.setBirthDate(tmpDate);
+	c1->setBirthDate(tmpDate);
 
 	// downcast pointer for Client Contact
 	clearCIN();
-	Contact * ptr = &c1;
+	Contact * ptr = c1;
 	ClientContact *contactPtr = dynamic_cast < ClientContact * > (ptr);
 	if (contactPtr != 0)
 	{
@@ -144,7 +148,7 @@ void addBirthDate(Contact& c1)
 //*******************************************************
 // Email Entry
 //*******************************************************
-void addContactEmail(Contact& c1)
+void addContactEmail(Contact *c1)
 {
 	Contact::Email tmpEmail;
 	do
@@ -157,21 +161,21 @@ void addContactEmail(Contact& c1)
 		}
 		else
 		{
-			if (c1.getEmail() != "<Unknown>")
-				cout << c1.getFirstName() << " currently has " << c1.getEmail() << " as their email." << endl;
+			if (c1->getEmail() != "<Unknown>")
+				cout << c1->getFirstName() << " currently has " << c1->getEmail() << " as their email." << endl;
 			cout << "Please enter your contact's email in the form of user@domain.tld: ";
 		}
 
 		cin >> tmpEmail; // store date
 	} while ( cin.fail() );
 	//cout << "Email entered was " << tmpEmail.emailAddress << endl;
-	c1.setEmail(tmpEmail);
+	c1->setEmail(tmpEmail);
 }// addContactEmail
 
 //*******************************************************
 // Phone Entry
 //*******************************************************
-void addContactPhones(Contact& c1)
+void addContactPhones(Contact *c1)
 {
 	// Prompt for home phone number
 	PhoneNumber inHomePhone;
@@ -184,13 +188,13 @@ void addContactPhones(Contact& c1)
 		}
 		else
 		{
-			if (c1.getHomePhone() != "<Unknown>")
-				cout << c1.getFirstName() << " currently has " << c1.getHomePhone() << " as their home phone." << endl;
+			if (c1->getHomePhone() != "<Unknown>")
+				cout << c1->getFirstName() << " currently has " << c1->getHomePhone() << " as their home phone." << endl;
 			cout << "Please enter your contact's home phone number in the form of (NNN) NNN-NNNN: ";
 		}
 		cin >> inHomePhone; // store date
 	} while ( cin.fail() );
-	c1.setHomePhone(inHomePhone);
+	c1->setHomePhone(inHomePhone);
 
 	// Prompt for mobile phone number
 	clearCIN();
@@ -205,13 +209,13 @@ void addContactPhones(Contact& c1)
 		}
 		else
 		{
-			if (c1.getMobilePhone() != "<Unknown>")
-				cout << c1.getFirstName() << " currently has " << c1.getMobilePhone() << " as their mobile phone." << endl;
+			if (c1->getMobilePhone() != "<Unknown>")
+				cout << c1->getFirstName() << " currently has " << c1->getMobilePhone() << " as their mobile phone." << endl;
 			cout << "Please enter your contact's mobile phone number in the form of (NNN) NNN-NNNN: ";
 		}
 		cin >> inMobilePhone; // store date
 	} while ( cin.fail() );
-	c1.setMobilePhone(inMobilePhone);
+	c1->setMobilePhone(inMobilePhone);
 
 	// Prompt for work phone number
 	clearCIN();
@@ -226,20 +230,20 @@ void addContactPhones(Contact& c1)
 		}
 		else
 		{
-			if (c1.getWorkPhone() != "<Unknown>")
-				cout << c1.getFirstName() << " currently has " << c1.getWorkPhone() << " as their work phone." << endl;
+			if (c1->getWorkPhone() != "<Unknown>")
+				cout << c1->getFirstName() << " currently has " << c1->getWorkPhone() << " as their work phone." << endl;
 			cout << "Please enter your contact's work phone number in the form of (NNN) NNN-NNNN: ";
 		}
 		cin >> inWorkPhone; // store date
 	} while ( cin.fail() );
-	c1.setWorkPhone(inWorkPhone);
+	c1->setWorkPhone(inWorkPhone);
 }// addContactPhones
 
 
 //*******************************************************
 // Contact Edit Menu
 //*******************************************************
-void contactEditMenu(Contact& c1)
+void contactEditMenu(Contact *c1)
 {
 	char menuChoice;
 	do {
@@ -354,7 +358,7 @@ Contact* contactEntry()
 	}// end downcast client date entry
 
 	// Prompt for additional information
-	contactEditMenu(*c1);
+	contactEditMenu(c1);
 
 	return c1;
 } // contactEntry
@@ -362,9 +366,8 @@ Contact* contactEntry()
 //*******************************************************
 // Display output
 //*******************************************************
-void displayContact(Contact * c1)
+void displayContact(Contact *c1)
 {
-
 	// downcast pointer for Relative
 	RelativeContact *rContactPtr = dynamic_cast < RelativeContact * > (c1);
 	// downcast pointer for Work contact
@@ -430,6 +433,9 @@ void displayContact(Contact * c1)
 
 } // displayContact
 
+//*******************************************************
+// Compare Names
+//*******************************************************
 bool compareNames(string cN, string sN){
 	bool same = false;
 	size_t length = 0;
@@ -451,3 +457,4 @@ bool compareNames(string cN, string sN){
 
 	return same;
 }
+
