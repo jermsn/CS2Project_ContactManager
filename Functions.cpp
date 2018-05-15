@@ -317,6 +317,7 @@ Contact* contactEntry()
 		}
 	} while ( clientType < 1 && clientType > 4);
 
+
 	//*******************************************************
 	// Name Entry
 	//*******************************************************
@@ -437,7 +438,7 @@ bool compareNames(string cN, string sN){
 	else
 		length = cN.length();
 
-	int i = 0;
+	unsigned int i = 0;
 	while(i < length){
 		if(tolower(cN[i]) == tolower(sN[i]))
 			i++;
