@@ -37,7 +37,7 @@ int main() {
 					if (cont1 == nullptr)
 						{ cout << "No contact created yet." << endl; }
 					else
-						displayContact(cont1);
+						list.printList();
 					break;
 				}//case 2
 				case('3'):{

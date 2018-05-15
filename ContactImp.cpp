@@ -520,23 +520,28 @@ void Contact::resetContact(){
 bool Contact::operator<(Contact *right) const {
 	auto left = this;
 
-	if(left->getTypeOfContactInt() < right->getTypeOfContactInt())
+	if(right == nullptr)
 		return true;
-	else if(left->getTypeOfContactInt() < right->getTypeOfContactInt())
-		return false;
 	else{
-		if(left->getLastName() < right->getLastName())
+		if(left->getTypeOfContactInt() < right->getTypeOfContactInt())
 			return true;
-		else if(left->getLastName() > right->getLastName())
+		else if(left->getTypeOfContactInt() > right->getTypeOfContactInt())
 			return false;
 		else{
-			if(left->getFirstName() < right->getFirstName())
+			if(compareNamesLess(left->getLastName(), right->getLastName()))
 				return true;
-			else if(left->getFirstName() == right->getFirstName())
-				return true;
-			else{
-				return (left->getBirthDate() <= right->getBirthDate());
+			else if(!compareNamesLess(left->getLastName(), right->getLastName()))
+				return false;
+			else if(compareNames(left->getLastName(), right->getLastName())){
+				if (compareNamesLess(left->getFirstName(), right->getFirstName()))
+					return true;
+				else if(!compareNamesLess(left->getFirstName(), right->getFirstName()))
+					return false;
+				else if (compareNames(left->getFirstName(), right->getFirstName()))
+					return true;
 			}
+			else
+				return false;
 		}
 	}
 }

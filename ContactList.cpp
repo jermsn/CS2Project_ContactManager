@@ -16,8 +16,7 @@ ContactList::ContactList(){
 	// Initialize the list with 100 empty contacts
 	//*******************************************************
 	for(size_t i = 0; i < 99; i++){
-		auto newNode = new listNode;
-		currentNode->nextContact = newNode;
+		currentNode->nextContact = new listNode;
 		currentNode = currentNode->nextContact;
 	}
 
@@ -86,6 +85,7 @@ void ContactList::deleteContact(string firstN, string lastN){
 		cout << "Contact Deleted: " << firstN << ", " << lastN << endl;
 		cont1 = nullptr;
 	}
+	count--;
 }
 
 //*******************************************************
@@ -115,23 +115,25 @@ void ContactList::insert(Contact *c1){
 // addContact
 //*******************************************************
 void ContactList::addContact(Contact *c1){
-	auto newNode = new listNode;
-	newNode->currentContact = c1;
 
-	if(!head->currentContact)
-		head = newNode;
-	else {
+	if(!head->currentContact){
+		head->currentContact = c1;
+	}
+	else{
 		auto currentNode = head;
+//		while(currentNode->nextContact->currentContact)
+//			currentNode = currentNode->nextContact;
+//		currentNode->currentContact = c1;
 
-		while(currentNode){
-			if(newNode->currentContact < currentNode->currentContact) {
-				listNode* temp1, * temp2;
-				temp1 = currentNode;
-				temp2 = currentNode->nextContact;
+		while(currentNode->currentContact){
+			if(c1 < currentNode->currentContact) {
+				Contact *temp1, *temp2;
+				temp1 = currentNode->currentContact;
+				temp2 = currentNode->nextContact->currentContact;
 
-				currentNode = newNode;
-				currentNode->nextContact = temp1;
-				currentNode->nextContact->nextContact = temp2;
+				currentNode->currentContact = c1;
+				currentNode->nextContact->currentContact = temp1;
+				currentNode->nextContact->nextContact->currentContact = temp2;
 			}
 			else
 				currentNode = currentNode->nextContact;

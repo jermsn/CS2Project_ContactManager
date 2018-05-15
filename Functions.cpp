@@ -450,3 +450,27 @@ bool compareNames(string cN, string sN){
 
 	return same;
 }
+
+bool compareNamesLess(string cN, string sN){
+	bool less = false;
+	size_t length = 0;
+	if(cN.length() < sN.length())
+		length = sN.length();
+	else
+		length = cN.length();
+
+	int i = 0;
+	while(i < length){
+		if(tolower(cN[i]) == tolower(sN[i]))
+			i++;
+		else if(tolower(cN[i]) < tolower(sN[i]))
+			return true;
+		else
+			return less;
+	}
+
+	if(i == length)
+		less = true;
+
+	return less;
+}

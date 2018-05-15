@@ -11,8 +11,9 @@
 class ContactList {
 private:
 	struct listNode{
-		Contact *currentContact = nullptr;
-		listNode *nextContact = nullptr;
+		Contact *currentContact;
+		listNode *nextContact;
+		listNode() : currentContact(nullptr), nextContact(nullptr) {}
 	};
 
 	listNode *head;
