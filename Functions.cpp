@@ -456,4 +456,3 @@ bool compareNames(string cN, string sN){
 
 	return same;
 }
-

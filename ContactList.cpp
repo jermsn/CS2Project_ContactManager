@@ -175,9 +175,9 @@ Contact *ContactList::searchForContact(string firstN, string lastN){
 	else
 		while(nodePtr)							// If you are not at the end of the list
 		{
-			if( nodePtr->currentContact->getFirstName() == firstN ) // Compare first names
+			if( compareNames(nodePtr->currentContact->getFirstName(), firstN) ) // Compare first names
 			{
-				if ( nodePtr->currentContact->getLastName() == lastN ) // Compare last names
+				if ( compareNames(nodePtr->currentContact->getLastName(), lastN) ) // Compare last names
 				{
 					returnPtr = nodePtr->currentContact;
 				}
