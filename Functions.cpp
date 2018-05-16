@@ -396,7 +396,7 @@ void displayContact(Contact *c1)
 	// Row 3
 	string fullCity;
 	if(c1->getCity() == "<Unknown>" && c1->getState() != "99 ") // don't print city or comma if unknown
-		{ fullCity = string(c1->getState()) + " " + string(c1->getZip()); }
+		{ fullCity = string(c1->getState()); }
 	else if (c1->getCity() == "<Unknown>" && c1->getState() == "99 ")
 		{ fullCity = " "; }
 	else							// print full city state zip

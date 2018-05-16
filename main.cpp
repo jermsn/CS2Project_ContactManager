@@ -3,7 +3,7 @@
 // Author      : Jeremy Norvell
 // Version     :
 // Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
+// Description : Contact Manager
 //============================================================================
 
 #include <iostream>
