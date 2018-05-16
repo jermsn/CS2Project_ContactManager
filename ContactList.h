@@ -8,26 +8,29 @@
 #include "Contact.h"
 #include "Functions.h"
 
+using namespace std;
+
 class ContactList {
 private:
-	struct listNode{
-		Contact *currentContact;
-		listNode *nextContact;
-		listNode() : currentContact(nullptr), nextContact(nullptr) {}
+	struct ListNode{
+		Contact *currentContact;	// Pointer to contact information
+		struct ListNode *next;		// Pointer to the next node
 	};
 
-	listNode *head;
+	ListNode *head;
 	int count;
 public:
+	// Constructor
 	ContactList();
 	~ContactList();
-	Contact *searchForContact(string, string);
-	void deleteContact(string, string);
-	void editContact(string, string);
-	void addContact(Contact *);
-	void insert(Contact *);
-	void printList();
+	void appendNode(Contact *);
+	void insertNode(Contact *);
+	void deleteNode(Contact *);
+	Contact* searchForContact(string firstN, string lastN);
+	void displayList() const;
 	bool empty();
+	void writeContacts(fstream&) const;
+	void readContacts(fstream&, ContactList& );
 };
 
 #endif

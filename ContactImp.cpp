@@ -511,37 +511,38 @@ void Contact::resetContact(){
 	this->city = "999";
 	for(int s=0; s<2; s++)
 		this->state.stateAbbrev[s] = '9';
+	this->state.stateAbbrev[2] = ' ';
 	this->email.emailAddress = "999@999.999";
 }
 
 //****************************************************************
 //	Contact operator overload for <
 //****************************************************************
-bool Contact::operator<(Contact *right) const {
-	auto left = this;
-
-	if(right == nullptr)
-		return true;
-	else{
-		if(left->getTypeOfContactInt() < right->getTypeOfContactInt())
-			return true;
-		else if(left->getTypeOfContactInt() > right->getTypeOfContactInt())
-			return false;
-		else{
-			if(compareNamesLess(left->getLastName(), right->getLastName()))
-				return true;
-			else if(!compareNamesLess(left->getLastName(), right->getLastName()))
-				return false;
-			else if(compareNames(left->getLastName(), right->getLastName())){
-				if (compareNamesLess(left->getFirstName(), right->getFirstName()))
-					return true;
-				else if(!compareNamesLess(left->getFirstName(), right->getFirstName()))
-					return false;
-				else if (compareNames(left->getFirstName(), right->getFirstName()))
-					return true;
-			}
-			else
-				return false;
-		}
-	}
-}
+//bool Contact::operator<(Contact *right) const {
+//	auto left = this;
+//
+//	if(right == nullptr)
+//		return true;
+//	else{
+//		if(left->getTypeOfContactInt() < right->getTypeOfContactInt())
+//			return true;
+//		else if(left->getTypeOfContactInt() > right->getTypeOfContactInt())
+//			return false;
+//		else{
+//			if(compareNamesLess(left->getLastName(), right->getLastName()))
+//				return true;
+//			else if(!compareNamesLess(left->getLastName(), right->getLastName()))
+//				return false;
+//			else if(compareNames(left->getLastName(), right->getLastName())){
+//				if (compareNamesLess(left->getFirstName(), right->getFirstName()))
+//					return true;
+//				else if(!compareNamesLess(left->getFirstName(), right->getFirstName()))
+//					return false;
+//				else if (compareNames(left->getFirstName(), right->getFirstName()))
+//					return true;
+//			}
+//			else
+//				return false;
+//		}
+//	}
+//}
