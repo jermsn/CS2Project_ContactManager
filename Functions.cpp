@@ -32,8 +32,7 @@ void contactMenu(void) {
 	cout << "3. Edit Contact Information" << endl;
 	cout << "4. Delete Contact Information" << endl;
 	cout << "5. Save Contact Information to an External File" << endl;
-	cout << "6. Load Contact Information from an External File" << endl;
-	cout << "7. Exit the Program" << endl;
+	cout << "6. Exit the Program" << endl;
 }//contactMenu
 
 //*******************************************************
@@ -396,12 +395,12 @@ void displayContact(Contact *c1)
 
 	// Row 3
 	string fullCity;
-	if(c1->getCity() == "<Unknown>" && c1->getState() != "99") // don't print city or comma if unknown
-		fullCity = string(c1->getState()) + " " + string(c1->getZip());
-	else if (c1->getCity() == "<Unknown>" && c1->getState() == "99")
-		fullCity = " ";
+	if(c1->getCity() == "<Unknown>" && c1->getState() != "99 ") // don't print city or comma if unknown
+		{ fullCity = string(c1->getState()) + " " + string(c1->getZip()); }
+	else if (c1->getCity() == "<Unknown>" && c1->getState() == "99 ")
+		{ fullCity = " "; }
 	else							// print full city state zip
-		fullCity = string(c1->getCity()) + ", " + string(c1->getState()) + " " + string(c1->getZip());
+		{ fullCity = string(c1->getCity()) + ", " + string(c1->getState()) + " " + string(c1->getZip()); }
 	if (rContactPtr != 0) // relative contact
 		{ cout 	<< setw(14) << left << "Relationship: "
 				<< setw(40) << left << rContactPtr->getRelationship()

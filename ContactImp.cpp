@@ -511,6 +511,7 @@ void Contact::resetContact(){
 	this->city = "999";
 	for(int s=0; s<2; s++)
 		this->state.stateAbbrev[s] = '9';
+	this->state.stateAbbrev[2] = ' ';
 	this->email.emailAddress = "999@999.999";
 }
 

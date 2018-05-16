@@ -50,7 +50,7 @@ int main() {
 
 					cont1 = list.searchForContact(firstName, lastName);
 					if(cont1 == nullptr)
-						{ cout << "There is no contact of that name to edit." << endl << endl; }
+						{ cout << "\nThere is no contact of that name to edit." << endl << endl; }
 					else
 						{ contactEditMenu( cont1 );	}
 					break;
@@ -63,13 +63,13 @@ int main() {
 
 					cont1 = list.searchForContact(firstName, lastName);
 					if(list.searchForContact(firstName, lastName) == nullptr)
-						{ cout << "There is no contact of that name to delete." << endl << endl; }
+						{ cout << "\nThere is no contact of that name to delete." << endl << endl; }
 					else
 						{ list.deleteNode(cont1);	}
 					break;
 				}
 				case('5'): {
-					cout << "Saving your contacts to the file 'contacts.bin'." << endl << endl;
+					cout << "\nSaving your contacts to the file 'contacts.bin'." << endl << endl;
 
 					fstream outContacts( "contacts.bin", ios::out | ios::binary );
 					// exit program if fstream cannot open file
@@ -81,26 +81,15 @@ int main() {
 					break;
 				}//case 5
 				case('6'): {
-					cout << "Loading your contacts from the file 'contacts.bin'." << endl;
-
-					fstream inContacts( "contacts.bin", ios::in | ios::binary);
-					if ( !inContacts )
-						{ cout << " Error: 'contacts.bin' could not be opened." << endl; } // end if
-					else
-						{ list.readContacts(inContacts, list); } // read records from file
-					inContacts.close();
-					break;
-				}//case 6
-				case('7'): {
 					cout << endl << "Program is ending - Have a nice day!" << endl;
 					break;
-				}//case 7
+				}//case 6
 				default:  {
 					cout << "========================================" << endl << endl;
-					cout << "Invalid choice. Valid menu options are 1-7. " << endl << endl;
+					cout << "Invalid choice. Valid menu options are 1-6. " << endl << endl;
 				}
 			}//switch menuChoice
-		} while ( menuChoice != '7' ); //while
+		} while ( menuChoice != '6' ); //while
 
 	return 0;
 }

@@ -12,20 +12,6 @@
 
 using namespace std;
 
-
-//*******************************************************
-// editContact
-//*******************************************************
-//void ContactList::editContact(string firstN, string lastN){
-//	Contact *cont1 = searchForContact(firstN, lastN);
-//	if(!cont1) {
-//		cout << "Contact Could not be found" << endl;
-//		contactMenu();
-//	}
-//	else
-//		contactEditMenu(reinterpret_cast< Contact& >(cont1));
-//}
-
 //*******************************************************
 // appendNode for Contact List
 //*******************************************************
@@ -178,43 +164,28 @@ bool ContactList::empty()
 // searchForContact for ContactList
 //*******************************************************
 Contact *ContactList::searchForContact(string firstN, string lastN){
-	Contact *tempCont = nullptr;
-	auto currentNode = head;
-	string contName;
+	ListNode *nodePtr;							// To traverse the list
+	Contact *returnPtr;							// For the return pointer
 
-	if(!head)
-		return nullptr;
-	else if(!currentNode->next)
-	{
-		contName = currentNode->currentContact->getFirstName();
-		if(compareNames(contName, firstN))
-		{
-			contName = currentNode->currentContact->getLastName();
-			if (compareNames(contName, lastN))
-			{
-				tempCont = currentNode->currentContact;
-				return tempCont;
-			}
-		}
-	}
+	nodePtr = head;
+	returnPtr = nullptr;
+
+	if(!head)									// if there is no list, return nullptr
+	{ return nullptr; }
 	else
-		while(currentNode->next)
+		while(nodePtr)							// If you are not at the end of the list
 		{
-			contName = currentNode->currentContact->getFirstName();
-			if(compareNames(contName, firstN))
+			if( nodePtr->currentContact->getFirstName() == firstN ) // Compare first names
 			{
-				contName = currentNode->currentContact->getLastName();
-				if (compareNames(contName, lastN))
+				if ( nodePtr->currentContact->getLastName() == lastN ) // Compare last names
 				{
-					tempCont = currentNode->currentContact;
-					return tempCont;
+					returnPtr = nodePtr->currentContact;
 				}
 			}
-			currentNode = currentNode->next;
+			nodePtr = nodePtr->next;			// Move to next node in list
 		}
-	return tempCont;
+	return returnPtr;
 } // end searchForContact
-
 
 //*******************************************************
 // Constructor for Contact List
@@ -261,37 +232,12 @@ void ContactList::writeContacts(fstream &outFile) const
 		Contact outContact = *nodePtr->currentContact;
 		cout << "Writing record for " << outContact.getFirstName() << " " << outContact.getLastName() << endl;
 
-		// downcast pointer for Relative
-//		RelativeContact *rContactPtr = dynamic_cast < RelativeContact * > (nodePtr->currentContact);
-//		// downcast pointer for Work contact
-//		WorkContact *wContactPtr = dynamic_cast < WorkContact * > (nodePtr->currentContact);
-//		// downcast pointer for Client Contact
-//		ClientContact *cContactPtr = dynamic_cast < ClientContact * > (nodePtr->currentContact);
-//		// downcast pointer for Personal Contact
-//		PersonalContact *pContactPtr = dynamic_cast < PersonalContact * > (nodePtr->currentContact);
-//
-//		if(rContactPtr != 0)
-//		{
-//			RelativeContact writeContact = *nodePtr->currentContact;
-//			outFile.write( reinterpret_cast< const char * >( &writeContact ), sizeof( writeContact ) );
-//		}
 		outFile.write( reinterpret_cast< const char * >( &outContact ), sizeof( outContact ) );
 
 		//Move to the next node
 		nodePtr = nodePtr->next;
 	}
+	cout << endl;
 } // end writeContact
 
-//*******************************************************
-// readContacts for ContactList
-//*******************************************************
-void ContactList::readContacts(fstream &inFile, ContactList &inList)
-{
-	while(!inFile.eof())
-	{
-		Contact inCont;
-		inFile.read( reinterpret_cast<char *>(&inCont), sizeof(inCont));
-		cout << "Read in record for " << inCont.getFirstName() << " " << inCont.getLastName() << endl;
- 		//inList.appendNode(&inCont);
-	}
-} // end readContacts
+
